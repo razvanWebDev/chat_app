@@ -12,6 +12,11 @@ module.exports = {
       height: {
         "chat-panel-height": "calc(100vh - 11rem)",
       },
+      maxWidth: {
+        "1/4": "25%",
+        "1/2": "50%",
+        "3/4": "75%",
+      },
     },
   },
   variants: {
