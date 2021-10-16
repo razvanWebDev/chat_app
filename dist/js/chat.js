@@ -26,7 +26,7 @@ window.onload = () => {
 
   // #################################
 
-  // switch between chat/groups=============
+  // switch between chat/groups=============;
   const switchTabs = document.querySelectorAll(".switch-tab");
   const switchIcons = document.querySelectorAll(".switch-icon");
 
@@ -56,15 +56,63 @@ window.onload = () => {
           `${currentTab}-side-panel`
         );
         currentsidePanel.classList.remove("hidden");
-
-        // TODO switch chat window if needed
       });
     }
   };
 
-  //   event listener
+  //event listener
   if (elementExists(switchTabs)) {
     switchTabsOnClick();
+  }
+
+  // Set current panel item========
+  const chatPanelItems = document.querySelectorAll(".chat-panel-item");
+  const groupPanelItems = document.querySelectorAll(".group-panel-item");
+
+  const setCurrentPaneItem = (items) => {
+    items.forEach((item) => {
+      item.addEventListener("click", () => {
+        console.log("click");
+        items.forEach((item) => item.classList.remove("active-panel-item"));
+        item.classList.add("active-panel-item");
+      });
+    });
+  };
+
+  // event listeners
+  if (elementExists(chatPanelItems)) {
+    setCurrentPaneItem(chatPanelItems);
+  }
+  if (elementExists(groupPanelItems)) {
+    setCurrentPaneItem(groupPanelItems);
+  }
+
+  // Show-hide side panel on mobile===============
+  const panelItems = document.querySelectorAll(".panel-item");
+
+  const showSidePanelArrow = document.querySelector("#show-side-panel-arrow");
+  const textWindow = document.querySelector("#text-window");
+
+  const hideTextWindow = () => {
+    showSidePanelArrow.addEventListener("click", () => {
+      textWindow.classList.add("translate-x-full");
+    });
+  };
+
+  const showTextWindow = () => {
+    panelItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        textWindow.classList.remove("translate-x-full");
+      });
+    });
+  };
+
+  //   event listeners
+  if (elementExists(showSidePanelArrow)) {
+    hideTextWindow();
+  }
+  if (elementExists(panelItems)) {
+    showTextWindow();
   }
 
   //   ###############################################

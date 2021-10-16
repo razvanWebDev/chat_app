@@ -2,6 +2,9 @@ module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    debugScreens: {
+      position: ["top", "left"],
+    },
     extend: {
       colors: {
         primary: {
@@ -26,6 +29,7 @@ module.exports = {
     },
   },
   plugins: [
+    require("tailwindcss-debug-screens"),
     require("tailwind-scrollbar-hide"),
     require("tailwind-scrollbar"),
     require("@tailwindcss/forms"),
