@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/fgEmojiPicker.js"></script>
-    <title>Chat</title>
-</head>
-
-<body class="overflow-x-hidden text-gray-700 debug-screen">
+<?php 
+$header_title = "Chat";
+include "php/header.php"; 
+?>
     <div id="main-container" class="flex w-screen h-screen">
 
         <!-- SIDE PANEL -->
@@ -391,7 +382,7 @@
                         class="absolute right-0 z-50 hidden px-4 py-1 transition bg-white border border-gray-200 rounded cursor-pointer -bottom-12 hover:bg-gray-50">
                         <div class="flex items-center space-x-2 w-max">
                             <img src="img/icons/logout.svg" alt="logout" class="w-4">
-                            <span class="text-sm">Logout</span>
+                            <a href="php/logout.php"><span class="text-sm">Logout</span></a>
                         </div>
                     </div>
                 </div>
@@ -526,10 +517,4 @@
         </div>
     </div>
 
-
-
-    <script src="js/chat.js"></script>
-
-</body>
-
-</html>
+<?php include "php/footer.php"; ?>

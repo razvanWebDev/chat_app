@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>New Member</title>
-</head>
-
-<body class="overflow-x-hidden text-gray-700 debug-screen">
+<?php 
+$header_title = "Member request";
+include "php/header.php"; 
+?>
     <div class="flex items-center justify-center w-screen min-h-screen bg-blue-100 ">
         <div id="login-card"
             class="px-8 py-4 space-y-4 text-gray-600 bg-white border-t-4 rounded-lg shadow-lg border-primary w-96">
@@ -63,7 +55,4 @@
         </div>
     </div>
 
-    <script src="js/chat.js"></script>
-</body>
-
-</html>
+<?php include "php/footer.php"; ?>

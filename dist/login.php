@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(isset($_SESSION["m_username"])){
+    header("Location: index.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +13,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Login</title>
+    <script src="js/fgEmojiPicker.js"></script>
+    <?php $title = !empty($header_title) ? $header_title : "" ?>
+    <title><?php echo $title ?></title>
 </head>
 
 <body class="overflow-x-hidden text-gray-700 debug-screen">
@@ -16,7 +25,7 @@
             <h2 class="text-3xl text-center">Member Login</h2>
             <hr>
             <p class="text-base text-center">You need to be logged in to have access to the chat area</p>
-            <form action="" method="post">
+            <form action="php/login.php" method="post">
                 <div class="flex h-10 rounded-md shadow-sm">
                     <input type="text" name="username" class="flex-1 block rounded-none input rounded-l-md sm:text-sm"
                         placeholder="Email / Username*" required>
@@ -34,7 +43,7 @@
                         <img src="img/icons/lock.svg" alt="username" class="object-contain w-full h-full">
                     </div>
                 </div>
-                <button class="w-full h-10 py-2 mt-4 text-white transition rounded-md hover:opacity-75 bg-primary">Sign
+                <button type="submit" name="login" class="w-full h-10 py-2 mt-4 text-white transition rounded-md hover:opacity-75 bg-primary">Sign
                     In</button>
             </form>
             <div class="text-primary">
@@ -48,7 +57,4 @@
         </div>
     </div>
 
-    <script src="js/chat.js"></script>
-</body>
-
-</html>
+<?php include "php/footer.php"; ?>
