@@ -1,11 +1,6 @@
 <?php ob_start(); ?>
 <?php include "php/db.php" ?>
-<?php session_start(); 
-if(!isset($_SESSION["m_username"])){
-    header("Location: login.php");
-    exit();
-}
-?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 

@@ -1,24 +1,12 @@
 <?php
-session_start();
+$header_title = "Login";
+include "php/header.php";
 if(isset($_SESSION["m_username"])){
     header("Location: index.php");
     exit();
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/fgEmojiPicker.js"></script>
-    <?php $title = !empty($header_title) ? $header_title : "" ?>
-    <title><?php echo $title ?></title>
-</head>
-
-<body class="overflow-x-hidden text-gray-700 debug-screen">
     <div class="flex items-center justify-center w-screen min-h-screen bg-blue-100 ">
         <div id="login-card"
             class="px-8 py-4 space-y-4 text-gray-600 bg-white border-t-4 rounded-lg shadow-lg border-primary w-96">
