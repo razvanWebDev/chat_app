@@ -398,24 +398,30 @@
             </div>
             <!-- chat window -->
             <div
-                class="flex flex-col-reverse flex-auto gap-8 pb-16 pl-8 pr-10 overflow-y-auto bg-white shadow-inner md:pr-16 md:pl-14 scrollbar scrollbar-track-blue-50 scrollbar-thumb-blue-300">
+                class="flex flex-col-reverse flex-auto gap-8 pb-16 pl-8 pr-10 overflow-y-auto bg-white shadow-inner md:pr-16 md:pl-14 scrollbar-thin scrollbar-track-blue-50 scrollbar-thumb-blue-300">
                 <!-- chat items -->
-                <div class="relative self-start px-4 py-1 text-white bg-blue-600 max-w-3/4 rounded-xl">
-                    1 Hello Lorem ipsum dolor sit amet consectetur
-                    <div class="absolute p-1 bg-white rounded-full -left-4 -bottom-4">
-                        <div style="background-image: url(img/users/user.png)"
-                            class="w-6 h-6 bg-center bg-cover rounded-full ">
-                        </div>
+                <div class="max-w-3/4 w-max">
+                    <div class="relative self-start px-4 py-1 text-white rounded-lg bg-primary">
+                        <p> 1 Hello Lorem ipsum dolor sit amet consectetur</p>
+                        <div class="absolute p-1 bg-white rounded-full -left-6 -bottom-6">
+                            <div style="background-image: url(img/users/user.png)"
+                                class="w-8 h-8 bg-center bg-cover rounded-full ">
+                            </div>
 
-                    </div>
-                </div>
-                <div class="relative self-end px-4 py-1 bg-gray-100 max-w-3/4 rounded-xl">
-                    2 Hello again!
-                    <div class="absolute p-1 bg-white rounded-full -right-4 -bottom-4">
-                        <div style="background-image: url(img/users/user.png)"
-                            class="w-6 h-6 bg-center bg-cover rounded-full ">
                         </div>
                     </div>
+                    <p class="ml-5 text-xs text-gray-500">12:39 am</p>
+                </div>
+                <div class="self-end max-w-3/4 w-max">
+                    <div class="relative px-4 py-1 bg-gray-100 rounded-lg">
+                        <p>2 Hello again!</p>
+                        <div class="absolute p-1 bg-white rounded-full -right-4 -bottom-4">
+                            <div style="background-image: url(img/users/user.png)"
+                                class="w-6 h-6 bg-center bg-cover rounded-full ">
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mr-5 text-xs text-right text-gray-500">12:39 am</p>
                 </div>
                 <div class="relative self-start px-4 py-1 text-white bg-blue-600 max-w-3/4 rounded-xl">
                     3 Hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, debitis?! Lorem ipsum dolor

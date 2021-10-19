@@ -1,11 +1,10 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
-
 .input {
   @apply w-full placeholder-gray-500 border-gray-300 rounded focus:border-gray-400 focus:ring-gray-300;
 }
-
 .active-panel-item {
-  @apply bg-blue-200 border-l-4 border-blue-600;
+  @apply bg-blue-200 border-l-4 border-primary;
 }
+
+@tailwind utilities;

@@ -823,6 +823,46 @@ select {
   }
 }
 
+.input {
+  width: 100%;
+  border-radius: 0.25rem;
+  --tw-border-opacity: 1;
+  border-color: rgba(209, 213, 219, var(--tw-border-opacity));
+}
+
+.input:focus {
+  --tw-border-opacity: 1;
+  border-color: rgba(156, 163, 175, var(--tw-border-opacity));
+}
+
+.input::-moz-placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgba(107, 114, 128, var(--tw-placeholder-opacity));
+}
+
+.input:-ms-input-placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgba(107, 114, 128, var(--tw-placeholder-opacity));
+}
+
+.input::placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgba(107, 114, 128, var(--tw-placeholder-opacity));
+}
+
+.input:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgba(209, 213, 219, var(--tw-ring-opacity));
+}
+
+.active-panel-item {
+  border-left-width: 4px;
+  --tw-border-opacity: 1;
+  border-color: rgba(23, 96, 131, var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(191, 219, 254, var(--tw-bg-opacity));
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -34033,54 +34073,6 @@ select {
 
 .hover\:scrollbar-thumb-primary-transparent::-webkit-scrollbar-thumb:hover {
   --scrollbar-thumb: #176083f2 !important;
-}
-
-.input {
-  width: 100%;
-  border-radius: 0.25rem;
-  --tw-border-opacity: 1;
-  border-color: rgba(209, 213, 219, var(--tw-border-opacity));
-}
-
-.input:focus {
-  --tw-border-opacity: 1;
-  border-color: rgba(156, 163, 175, var(--tw-border-opacity));
-}
-
-.input::-moz-placeholder {
-  --tw-placeholder-opacity: 1;
-  color: rgba(107, 114, 128, var(--tw-placeholder-opacity));
-}
-
-.input:-ms-input-placeholder {
-  --tw-placeholder-opacity: 1;
-  color: rgba(107, 114, 128, var(--tw-placeholder-opacity));
-}
-
-.input::placeholder {
-  --tw-placeholder-opacity: 1;
-  color: rgba(107, 114, 128, var(--tw-placeholder-opacity));
-}
-
-.input:focus {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgba(209, 213, 219, var(--tw-ring-opacity));
-}
-
-.active-panel-selector {
-  border-bottom-width: 4px;
-  --tw-border-opacity: 1;
-  border-color: rgba(37, 99, 235, var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: rgba(219, 234, 254, var(--tw-bg-opacity));
-}
-
-.active-panel-item {
-  border-left-width: 4px;
-  --tw-border-opacity: 1;
-  border-color: rgba(37, 99, 235, var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: rgba(191, 219, 254, var(--tw-bg-opacity));
 }
 
 @media (min-width: 640px) {
