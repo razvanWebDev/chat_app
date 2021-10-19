@@ -1,6 +1,10 @@
 <?php 
 $header_title = "Chat";
-include "php/header.php"; 
+include "php/header.php";
+if(!isset($_SESSION["m_username"])){
+    header("Location: login.php");
+    exit();
+}
 ?>
     <div id="main-container" class="flex w-screen h-screen">
 
