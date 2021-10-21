@@ -48,12 +48,10 @@ if(isset($_POST['signup'])) {
 
     // check passwords fields
     //Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character
-
     $uppercase = preg_match('@[A-Z]@', $password);
     $lowercase = preg_match('@[a-z]@', $password);
     $number    = preg_match('@[0-9]@', $password);
     $specialChars = preg_match('@[^\w]@', $password);
-
 
     if(empty($password)){
       $passwordErr = "&passwordErr=required";
