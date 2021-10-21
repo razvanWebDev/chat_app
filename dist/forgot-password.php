@@ -1,6 +1,6 @@
 <?php
 //success
-$subtitle_p = "You forgot your password? Here you can easily retrieve a new password.";
+$subtitle_p = "You forgot your password? Enter your email to reset password";
 $subtitle_p_color = "";
 //error
 $inputError = "";
