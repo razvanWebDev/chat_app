@@ -36,9 +36,7 @@ if(isset($_GET['login'])){
             $showPwdError = "";
             if($_GET['pwd'] == "required"){
                 $pwdErrorMsg = "Password required!";
-            }
-        }elseif(isset($_GET['pwd'])){
-            if($_GET['pwd'] == "wrong"){
+            }elseif($_GET['pwd'] == "wrong"){
                 $pwdErrorMsg = "Wrong password!";
             }
         }
