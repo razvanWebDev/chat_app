@@ -1,4 +1,14 @@
 <?php
+// PWD reset success
+$subtitle_p = "You need to be logged in to have access to the chat area";
+$subtitle_p_color = "";
+if(isset($_GET['newpwd'])){
+    if($_GET['newpwd'] == 'passwordupdated'){
+        $subtitle_p = "Password successfully changed!";
+        $subtitle_p_color = "text-green-500";
+    }
+}
+
 $userInputError = "";
 $showUserError = "hidden";
 $userErrorMsg = "";
@@ -7,32 +17,28 @@ $pwdInputError = "";
 $showPwdError = "hidden";
 $pwdErrorMsg = "";
 
-// Check fields
+// Validate form
 if(isset($_GET['login'])){
     if($_GET['login'] == "failed"){
         //user
         if(isset($_GET['user'])){
+            $userInputError = "-error";
+            $showUserError = "";
             if($_GET['user'] == "required"){
-                $userInputError = "-error";
-                $showUserError = "";
                 $userErrorMsg = "User required!";
             }elseif($_GET['user'] == "userExists"){
-                $userInputError = "-error";
-                $showUserError = "";
                 $userErrorMsg = "User doesn't exist!";
             }
         }
         //password
         if(isset($_GET['pwd'])){
+            $pwdInputError = "-error";
+            $showPwdError = "";
             if($_GET['pwd'] == "required"){
-                $pwdInputError = "-error";
-                $showPwdError = "";
                 $pwdErrorMsg = "Password required!";
             }
         }elseif(isset($_GET['pwd'])){
             if($_GET['pwd'] == "wrong"){
-                $pwdInputError = "-error";
-                $showPwdError = "";
                 $pwdErrorMsg = "Wrong password!";
             }
         }
@@ -54,7 +60,7 @@ if(isset($_SESSION["m_username"])){
             class="px-8 py-4 space-y-4 text-gray-600 bg-white border-t-4 rounded-lg shadow-lg border-primary w-96">
             <h2 class="text-3xl text-center">Member Login</h2>
             <hr>
-            <p class="text-base text-center">You need to be logged in to have access to the chat area</p>
+            <p class="text-base text-center <?php echo $subtitle_p_color ?>"><?php echo $subtitle_p ?></p>
             <form action="php/login.php" method="post">
                 <div class="flex h-10 rounded-md shadow-sm">
                     <input type="text" name="username" class="flex-1 block rounded-none input<?php echo $userInputError ?> rounded-l-md sm:text-sm"
@@ -64,7 +70,7 @@ if(isset($_SESSION["m_username"])){
                         <img src="img/icons/user.svg" alt="username" class="object-contain w-full h-full">
                     </div>
                 </div>
-                <span class="text-red-600 ml-2 <?php echo $showUserError ?>" ><?php echo $userErrorMsg ?></span>
+                <span class="text-red-500 ml-2 <?php echo $showUserError ?>" ><?php echo $userErrorMsg ?></span>
 
                 <div class="flex h-10 mt-4 rounded-md shadow-sm">
                     <input type="password" name="password"
@@ -74,7 +80,7 @@ if(isset($_SESSION["m_username"])){
                         <img src="img/icons/lock.svg" alt="username" class="object-contain w-full h-full">
                     </div>
                 </div>
-                <span class="text-red-600 ml-2 <?php echo $showPwdError ?>" ><?php echo $pwdErrorMsg ?></span>
+                <span class="text-red-500 ml-2 <?php echo $showPwdError ?>" ><?php echo $pwdErrorMsg ?></span>
 
                 <button type="submit" name="login" class="w-full h-10 py-2 mt-4 text-white transition rounded-md hover:opacity-75 bg-primary">Sign
                     In</button>
