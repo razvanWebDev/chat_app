@@ -12,6 +12,12 @@ if(isset($_POST['signup'])) {
     $password = escape($_POST['m_password']);
     $repeat_password = escape($_POST['repeat_password']);
 
+    $fileName = $_FILES['m_image']['name'];
+    $fileTmpName = $_FILES['m_image']['tmp_name'];
+    $fileSize = $_FILES['m_image']['size'];
+    $fileType = $_FILES['m_image']['type'];
+    $image_path = '../img/members/';
+
     $firstnameErr = $lastnameErr = $usernameErr = $emailErr = $passwordErr = $repeatPasswordError = "";
 
     //check firstname field
@@ -74,7 +80,12 @@ if(isset($_POST['signup'])) {
     }
     else{
       //add new user to db
-      createUser($firstname, $lastname, $username, $email, $password);
+      
+      $imageName = "";
+      if(ifExists($fileName)){
+        $imageName = uploadFile($fileName, $fileTmpName, $fileSize, $fileType, $image_path);
+      }
+      createUser($firstname, $lastname, $username, $email, $imageName, $password);
       header("Location: ../new-member-request.php?signup=success");
       exit();
     }

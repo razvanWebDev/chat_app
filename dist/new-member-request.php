@@ -1,3 +1,4 @@
+
 <?php
 $invalidFirstnameInput = "";
 $showFirstnameError = "hidden";
@@ -124,7 +125,7 @@ include "php/header.php";
             <h2 class="text-3xl text-center">New Member</h2>
             <hr>
             <p class="text-base text-center <?php echo $subtitle_p_color ?>"><?php echo $subtitle_p ?></p>
-            <form action="php/signup.php" method="post">
+            <form action="php/signup.php" method="post"  enctype="multipart/form-data">
                 <div class="flex h-10 rounded-md shadow-sm">
                     <input type="text" name="m_firstname" class="flex-1 block rounded-none input<?php echo $invalidFirstnameInput ?> rounded-l-md sm:text-sm"
                         placeholder="First Name*" value="<?php echo $firstNameInputValue ?>">
@@ -135,7 +136,7 @@ include "php/header.php";
                 </div>
                 <span class="text-red-500 ml-2 <?php echo $showFirstnameError ?>" ><?php echo $firstnameErrorMessage ?></span>
 
-                <div class="flex h-10 mt-4 rounded-md shadow-sm">
+                <div class="flex h-10 mt-3 rounded-md shadow-sm">
                     <input type="text" name="m_lastname" class="flex-1 block rounded-none input<?php echo $invalidLastnameInput ?> rounded-l-md sm:text-sm"
                         placeholder="Last Name*" value="<?php echo $lastNameInputValue ?>">
                     <div
@@ -145,7 +146,7 @@ include "php/header.php";
                 </div>
                 <span class="text-red-500 ml-2 <?php echo $showLastnameError ?>" ><?php echo $lastnameErrorMessage ?></span>
 
-                <div class="flex h-10 mt-4 rounded-md shadow-sm">
+                <div class="flex h-10 mt-3 rounded-md shadow-sm">
                     <input type="text" name="m_username" class="flex-1 block rounded-none input<?php echo $invalidUsernameInput ?> rounded-l-md sm:text-sm"
                         placeholder="Username*" value="<?php echo $userNameInputValue ?>">
                     <div
@@ -155,7 +156,7 @@ include "php/header.php";
                 </div>
                 <span class="text-red-500 ml-2 <?php echo $showUsernameError ?>" ><?php echo $usernameErrorMessage ?></span>
 
-                <div class="flex h-10 mt-4 rounded-md shadow-sm">
+                <div class="flex h-10 mt-3 rounded-md shadow-sm">
                     <input type="email" name="m_email" class="flex-1 block rounded-none input<?php echo $invalidEmailInput ?> rounded-l-md sm:text-sm"
                         placeholder="Email*" value="<?php echo $emailInputValue ?>">
                     <div
@@ -165,7 +166,7 @@ include "php/header.php";
                 </div>
                 <span class="text-red-500 ml-2 <?php echo $showEmailError ?>"><?php echo $emailErrorMessage ?></span>
 
-                <div class="flex h-10 mt-4 rounded-md shadow-sm">
+                <div class="flex h-10 mt-3 rounded-md shadow-sm">
                     <input type="password" name="m_password"
                         class="flex-1 block rounded-none input<?php echo $invalidPasswordInput ?> rounded-l-md sm:text-sm" placeholder="Password*">
                     <div
@@ -175,7 +176,7 @@ include "php/header.php";
                 </div>
                 <span class="text-red-500 ml-2 <?php echo $showPasswordError ?>" ><?php echo $password_error_msg ?></span>
 
-                <div class="flex h-10 mt-4 rounded-md shadow-sm">
+                <div class="flex h-10 mt-3 rounded-md shadow-sm">
                     <input type="password" name="repeat_password"
                         class="flex-1 block rounded-none input<?php echo $invalidRepeatPasswordInput ?> rounded-l-md sm:text-sm" placeholder="Repeat Password*">
                     <div
@@ -184,6 +185,13 @@ include "php/header.php";
                     </div>
                 </div>
                 <span class="text-red-500 ml-2 <?php echo $showRepeatPasswordError ?>" ><?php echo $repeat_password_error_msg ?></span>
+
+                <label
+                    class="flex items-center w-full h-10 px-4 py-3 mt-3 tracking-wide transition-all duration-150 ease-linear bg-white border border-gray-300 rounded-md shadow-sm cursor-pointer hover:bg-blue-50">
+                    <img src="img/icons/upload.svg" alt="Select Image" class="w-auto h-full mr-2">
+                    <span class="text-base leading-normal">Select Image</span>
+                    <input type='file' class="hidden" name="m_image" />
+                </label>
 
                 <button type="submit" name="signup"
                     class="w-full h-10 py-2 mt-4 text-white transition rounded-md hover:opacity-75 bg-primary">Request
