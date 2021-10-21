@@ -855,6 +855,38 @@ select {
   --tw-ring-color: rgba(209, 213, 219, var(--tw-ring-opacity));
 }
 
+.input-error {
+  width: 100%;
+  border-radius: 0.25rem;
+  --tw-border-opacity: 1;
+  border-color: rgba(252, 165, 165, var(--tw-border-opacity));
+}
+
+.input-error:focus {
+  --tw-border-opacity: 1;
+  border-color: rgba(248, 113, 113, var(--tw-border-opacity));
+}
+
+.input-error::-moz-placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgba(239, 68, 68, var(--tw-placeholder-opacity));
+}
+
+.input-error:-ms-input-placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgba(239, 68, 68, var(--tw-placeholder-opacity));
+}
+
+.input-error::placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgba(239, 68, 68, var(--tw-placeholder-opacity));
+}
+
+.input-error:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgba(252, 165, 165, var(--tw-ring-opacity));
+}
+
 .active-panel-item {
   border-left-width: 4px;
   --tw-border-opacity: 1;
