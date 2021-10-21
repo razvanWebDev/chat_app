@@ -30,8 +30,9 @@ function userExists($username, $email) {
 
 function createUser($firstname, $lastname, $username, $email, $password) {
   global $connection;
+  $status = 'inactive';
 
-  $query = "INSERT INTO members (m_firstname, m_lastname, m_username, m_email, m_password) VALUES (?, ?, ?, ?, ?);";
+  $query = "INSERT INTO members (m_firstname, m_lastname, m_username, m_email, m_status, m_password) VALUES (?, ?, ?, ?, ?, ?);";
   $stmt = mysqli_stmt_init($connection);
 
   if(!mysqli_stmt_prepare($stmt, $query)){
@@ -39,7 +40,7 @@ function createUser($firstname, $lastname, $username, $email, $password) {
     exit();
   }else{
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    mysqli_stmt_bind_param($stmt, "sssss", $firstname, $lastname, $username, $email, $hashed_password);
+    mysqli_stmt_bind_param($stmt, "ssssss", $firstname, $lastname, $username, $email, $status, $hashed_password);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);  
   }
