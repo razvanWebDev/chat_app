@@ -86,51 +86,6 @@ function loginUser($username, $password){
   }
 }
 
-function uploadImage($inputName, $path, $dbClmnName, $inputIndex="no_index"){
-  // Call example: uploadImage('image', '../img/', 'post_image');
-  //$inputIndex is required for multiple image upload (array)
-  global $connection;
-
-  $inputIndexExists = ($inputIndex != "no_index" || $inputIndex === 0);
-
-  $fileError = $inputIndexExists ? $_FILES[$inputName]['error'][$inputIndex] : $_FILES[$inputName]['error'];
-
-  //check if input is empty
-  if($fileError != 0) {
-    $GLOBALS[$dbClmnName] = "";
-    return;
-  } 
-
-  $fileName = $inputIndexExists ? $_FILES[$inputName]['name'][$inputIndex] : $_FILES[$inputName]['name'];
-  $fileTmpName = $inputIndexExists ? $_FILES[$inputName]['tmp_name'][$inputIndex] : $_FILES[$inputName]['tmp_name'];
-  $fileSize = $inputIndexExists ? $_FILES[$inputName]['size'][$inputIndex] : $_FILES[$inputName]['size'];
-  $fileType = $inputIndexExists ? $_FILES[$inputName]['type'][$inputIndex] : $_FILES[$inputName]['type'];
-  $fileExt = explode('.', $fileName);
-  $fileActualExt = strtolower(end($fileExt));
-  $allowed = array('jpeg', 'jpg', 'png');
-
-  if($fileName){
-      if(in_array($fileActualExt, $allowed)){
-          if($fileError == 0){
-              if($fileSize < 5000000){
-                  $fileNameNew = uniqid().rand().".".$fileActualExt;
-                  $fileDestination = $path.$fileNameNew;
-                  move_uploaded_file($fileTmpName, $fileDestination);
-                  $GLOBALS[$dbClmnName] = $fileNameNew;
-              }else{
-                  echo "Your file is too big! ".$fileSize;
-              }
-
-          }else{
-              echo "There was an error uploading your file";
-          }
-      }else{
-          echo "You cannot upload files of this type";
-      }
-
-  }
-}
-
 function uploadFile($fileName, $fileTmpName, $fileSize, $fileType, $path){
 
   $fileExt = explode('.', $fileName);
@@ -150,8 +105,8 @@ function uploadFile($fileName, $fileTmpName, $fileSize, $fileType, $path){
     }else{
       echo "You cannot upload files of this type";
     }
-
   }
+  return "";
 }
 
 ?>

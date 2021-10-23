@@ -80,11 +80,7 @@ if(isset($_POST['signup'])) {
     }
     else{
       //add new user to db
-      
-      $imageName = "";
-      if(ifExists($fileName)){
-        $imageName = uploadFile($fileName, $fileTmpName, $fileSize, $fileType, $image_path);
-      }
+      $imageName = uploadFile($fileName, $fileTmpName, $fileSize, $fileType, $image_path);
       createUser($firstname, $lastname, $username, $email, $imageName, $password);
       header("Location: ../new-member-request.php?signup=success");
       exit();
