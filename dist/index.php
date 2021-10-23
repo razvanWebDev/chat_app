@@ -30,269 +30,8 @@ if(!isset($_SESSION["m_username"])){
                     <input type="text" placeholder="Search users or messages" class="input">
                 </div>
                 <!-- chats panel items container -->
-                <div id="chat-panel"
+                <div id="chat-panel-list"
                     class="flex-auto pb-12 overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-blue-300">
-                    <a href="#" class="panel-item">
-                        <div
-                            class="flex h-20 p-4 mr-6 transition rounded chat-panel-item active-panel-item hover:bg-blue-300">
-                            <div class="flex-none w-16">
-                                <div style="background-image: url(img/users/user.png)"
-                                    class="relative w-12 h-12 mr-3 bg-center bg-cover rounded-full user-image">
-                                    <div class="absolute bottom-0 right-0 w-3 h-3 rounded-full"></div>
-                                </div>
-                            </div>
-                            <div class="flex flex-col justify-between flex-auto h-full truncate">
-                                <div class="flex w-full max-w-full overflow-hidden truncate">
-                                    <p class="flex-auto text-sm truncate"><b>1111Patrick Hendrix Lorem ipsum dolor
-                                            sit amet
-                                            consectetur, adipisicing elit. Nam, minus!</b>
-                                    </p>
-                                    <p class="flex-none float-right ml-2 text-xs text-gray-500">23:44</p>
-
-                                </div>
-                                <div>
-                                    <p class="w-full text-xs text-gray-500 truncate"><span>You</span> : Lorem ipsum
-                                        dolor sit amet Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                        Delectus, odit!
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="panel-item">
-                        <div class="flex h-20 p-4 mr-6 transition rounded chat-panel-item hover:bg-blue-300">
-                            <div class="flex-none w-16">
-                                <div style="background-image: url(img/users/user.png)"
-                                    class="relative w-12 h-12 mr-3 bg-center bg-cover rounded-full user-image">
-                                    <div class="absolute bottom-0 right-0 w-3 h-3 rounded-full"></div>
-                                </div>
-                            </div>
-                            <div class="flex flex-col justify-between flex-auto h-full truncate">
-                                <div class="flex w-full max-w-full overflow-hidden truncate">
-                                    <p class="flex-auto text-sm truncate"><b>1111Patrick Hendrix Lorem ipsum dolor
-                                            sit amet
-                                            consectetur, adipisicing elit. Nam, minus!</b>
-                                    </p>
-                                    <p class="flex-none float-right ml-2 text-xs text-gray-500">23:44</p>
-
-                                </div>
-                                <div>
-                                    <p class="w-full text-xs text-gray-500 truncate"><span>You</span> : Lorem ipsum
-                                        dolor sit amet Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                        Delectus, odit!
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="panel-item">
-                        <div class="flex h-20 p-4 mr-6 transition rounded chat-panel-item hover:bg-blue-300">
-                            <div class="flex-none w-16">
-                                <div style="background-image: url(img/users/user.png)"
-                                    class="relative w-12 h-12 mr-3 bg-center bg-cover rounded-full user-image">
-                                    <div class="absolute bottom-0 right-0 w-3 h-3 rounded-full"></div>
-                                </div>
-                            </div>
-                            <div class="flex flex-col justify-between flex-auto h-full truncate">
-                                <div class="flex w-full max-w-full overflow-hidden truncate">
-                                    <p class="flex-auto text-sm truncate"><b>1111Patrick Hendrix Lorem ipsum dolor
-                                            sit amet
-                                            consectetur, adipisicing elit. Nam, minus!</b>
-                                    </p>
-                                    <p class="flex-none float-right ml-2 text-xs text-gray-500">23:44</p>
-
-                                </div>
-                                <div>
-                                    <p class="w-full text-xs text-gray-500 truncate"><span>You</span> : Lorem ipsum
-                                        dolor sit amet Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                        Delectus, odit!
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="panel-item">
-                        <div class="flex h-20 p-4 mr-6 transition rounded chat-panel-item hover:bg-blue-300">
-                            <div class="flex-none w-16">
-                                <div style="background-image: url(img/users/user.png)"
-                                    class="relative w-12 h-12 mr-3 bg-center bg-cover rounded-full user-image">
-                                    <div class="absolute bottom-0 right-0 w-3 h-3 rounded-full"></div>
-                                </div>
-                            </div>
-                            <div class="flex flex-col justify-between flex-auto h-full truncate">
-                                <div class="flex w-full max-w-full overflow-hidden truncate">
-                                    <p class="flex-auto text-sm truncate"><b>1111Patrick Hendrix Lorem ipsum dolor
-                                            sit amet
-                                            consectetur, adipisicing elit. Nam, minus!</b>
-                                    </p>
-                                    <p class="flex-none float-right ml-2 text-xs text-gray-500">23:44</p>
-
-                                </div>
-                                <div>
-                                    <p class="w-full text-xs text-gray-500 truncate"><span>You</span> : Lorem ipsum
-                                        dolor sit amet Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                        Delectus, odit!
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="panel-item">
-                        <div class="flex h-20 p-4 mr-6 transition rounded chat-panel-item hover:bg-blue-300">
-                            <div class="flex-none w-16">
-                                <div style="background-image: url(img/users/user.png)"
-                                    class="relative w-12 h-12 mr-3 bg-center bg-cover rounded-full user-image">
-                                    <div class="absolute bottom-0 right-0 w-3 h-3 rounded-full"></div>
-                                </div>
-                            </div>
-                            <div class="flex flex-col justify-between flex-auto h-full truncate">
-                                <div class="flex w-full max-w-full overflow-hidden truncate">
-                                    <p class="flex-auto text-sm truncate"><b>1111Patrick Hendrix Lorem ipsum dolor
-                                            sit amet
-                                            consectetur, adipisicing elit. Nam, minus!</b>
-                                    </p>
-                                    <p class="flex-none float-right ml-2 text-xs text-gray-500">23:44</p>
-
-                                </div>
-                                <div>
-                                    <p class="w-full text-xs text-gray-500 truncate"><span>You</span> : Lorem ipsum
-                                        dolor sit amet Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                        Delectus, odit!
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="panel-item">
-                        <div class="flex h-20 p-4 mr-6 transition rounded chat-panel-item hover:bg-blue-300">
-                            <div class="flex-none w-16">
-                                <div style="background-image: url(img/users/user.png)"
-                                    class="relative w-12 h-12 mr-3 bg-center bg-cover rounded-full user-image">
-                                    <div class="absolute bottom-0 right-0 w-3 h-3 rounded-full"></div>
-                                </div>
-                            </div>
-                            <div class="flex flex-col justify-between flex-auto h-full truncate">
-                                <div class="flex w-full max-w-full overflow-hidden truncate">
-                                    <p class="flex-auto text-sm truncate"><b>1111Patrick Hendrix Lorem ipsum dolor
-                                            sit amet
-                                            consectetur, adipisicing elit. Nam, minus!</b>
-                                    </p>
-                                    <p class="flex-none float-right ml-2 text-xs text-gray-500">23:44</p>
-
-                                </div>
-                                <div>
-                                    <p class="w-full text-xs text-gray-500 truncate"><span>You</span> : Lorem ipsum
-                                        dolor sit amet Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                        Delectus, odit!
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="panel-item">
-                        <div class="flex h-20 p-4 mr-6 transition rounded chat-panel-item hover:bg-blue-300">
-                            <div class="flex-none w-16">
-                                <div style="background-image: url(img/users/user.png)"
-                                    class="relative w-12 h-12 mr-3 bg-center bg-cover rounded-full user-image">
-                                    <div class="absolute bottom-0 right-0 w-3 h-3 rounded-full"></div>
-                                </div>
-                            </div>
-                            <div class="flex flex-col justify-between flex-auto h-full truncate">
-                                <div class="flex w-full max-w-full overflow-hidden truncate">
-                                    <p class="flex-auto text-sm truncate"><b>1111Patrick Hendrix Lorem ipsum dolor
-                                            sit amet
-                                            consectetur, adipisicing elit. Nam, minus!</b>
-                                    </p>
-                                    <p class="flex-none float-right ml-2 text-xs text-gray-500">23:44</p>
-
-                                </div>
-                                <div>
-                                    <p class="w-full text-xs text-gray-500 truncate"><span>You</span> : Lorem ipsum
-                                        dolor sit amet Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                        Delectus, odit!
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="panel-item">
-                        <div class="flex h-20 p-4 mr-6 transition rounded chat-panel-item hover:bg-blue-300">
-                            <div class="flex-none w-16">
-                                <div style="background-image: url(img/users/user.png)"
-                                    class="relative w-12 h-12 mr-3 bg-center bg-cover rounded-full user-image">
-                                    <div class="absolute bottom-0 right-0 w-3 h-3 rounded-full"></div>
-                                </div>
-                            </div>
-                            <div class="flex flex-col justify-between flex-auto h-full truncate">
-                                <div class="flex w-full max-w-full overflow-hidden truncate">
-                                    <p class="flex-auto text-sm truncate"><b>1111Patrick Hendrix Lorem ipsum dolor
-                                            sit amet
-                                            consectetur, adipisicing elit. Nam, minus!</b>
-                                    </p>
-                                    <p class="flex-none float-right ml-2 text-xs text-gray-500">23:44</p>
-
-                                </div>
-                                <div>
-                                    <p class="w-full text-xs text-gray-500 truncate"><span>You</span> : Lorem ipsum
-                                        dolor sit amet Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                        Delectus, odit!
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="panel-item">
-                        <div class="flex h-20 p-4 mr-6 transition rounded chat-panel-item hover:bg-blue-300">
-                            <div class="flex-none w-16">
-                                <div style="background-image: url(img/users/user.png)"
-                                    class="relative w-12 h-12 mr-3 bg-center bg-cover rounded-full user-image">
-                                    <div class="absolute bottom-0 right-0 w-3 h-3 rounded-full"></div>
-                                </div>
-                            </div>
-                            <div class="flex flex-col justify-between flex-auto h-full truncate">
-                                <div class="flex w-full max-w-full overflow-hidden truncate">
-                                    <p class="flex-auto text-sm truncate"><b>1111Patrick Hendrix Lorem ipsum dolor
-                                            sit amet
-                                            consectetur, adipisicing elit. Nam, minus!</b>
-                                    </p>
-                                    <p class="flex-none float-right ml-2 text-xs text-gray-500">23:44</p>
-
-                                </div>
-                                <div>
-                                    <p class="w-full text-xs text-gray-500 truncate"><span>You</span> : Lorem ipsum
-                                        dolor sit amet Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                        Delectus, odit!
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="panel-item">
-                        <div class="flex h-20 p-4 mr-6 transition rounded chat-panel-item hover:bg-blue-300">
-                            <div class="flex-none w-16">
-                                <div style="background-image: url(img/users/user.png)"
-                                    class="relative w-12 h-12 mr-3 bg-center bg-cover rounded-full user-image">
-                                    <div class="absolute bottom-0 right-0 w-3 h-3 rounded-full"></div>
-                                </div>
-                            </div>
-                            <div class="flex flex-col justify-between flex-auto h-full truncate">
-                                <div class="flex w-full max-w-full overflow-hidden truncate">
-                                    <p class="flex-auto text-sm truncate"><b>1111Patrick Hendrix Lorem ipsum dolor
-                                            sit amet
-                                            consectetur, adipisicing elit. Nam, minus!</b>
-                                    </p>
-                                    <p class="flex-none float-right ml-2 text-xs text-gray-500">23:44</p>
-
-                                </div>
-                                <div>
-                                    <p class="w-full text-xs text-gray-500 truncate"><span>You</span> : Lorem ipsum
-                                        dolor sit amet Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                        Delectus, odit!
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
                 </div>
             </div>
 
@@ -306,7 +45,7 @@ if(!isset($_SESSION["m_username"])){
                     <input type="text" placeholder="Search group" class="input">
                 </div>
                 <!-- groups panel items container -->
-                <div id="groups-panel"
+                <div id="groups-panel-list"
                     class="flex-auto pb-12 overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-blue-300">
                     <a href="#" class="panel-item">
                         <div
@@ -369,15 +108,27 @@ if(!isset($_SESSION["m_username"])){
         <div id="text-window"
             class="absolute flex flex-col w-screen h-screen overflow-y-auto transition-transform duration-300 transform translate-x-full shadow-inner md:static md:translate-x-0 bg-gray-50">
             <!-- top bar -->
+            <?php
+            $query = "SELECT * FROM members WHERE m_unique_id = {$_SESSION['unique_id']}";
+            $select_member = mysqli_query($connection, $query);
+            if(mysqli_num_rows($select_member) > 0){
+                $row = mysqli_fetch_assoc($select_member);
+
+                $firstname = $row['m_firstname'];
+                $lastname = $row['m_lastname'];
+                $image = !empty($row['m_image']) ? $row['m_image'] : "member.png";
+            }
+
+            ?>
             <div class="flex items-center justify-between flex-none w-full px-6 py-4 border-b md:px-12">
                 <div class="flex items-center">
                     <img src="img/icons/arrow-left.svg" alt="back" id="show-side-panel-arrow"
                         class="w-6 mr-4 cursor-pointer md:hidden">
-                    <div style="background-image: url(img/users/user.png)"
+                    <div style="background-image: url(img/members/<?php echo $image ?>)"
                         class="relative w-12 h-12 mr-3 bg-center bg-cover rounded-full user-image">
-                        <div class="absolute bottom-0 right-0 w-3 h-3 bg-red-400 rounded-full"></div>
+                        <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-400 rounded-full"></div>
                     </div>
-                    <p class="text-sm truncate"><b>Patrick Hendrix</b></p>
+                    <p class="text-sm truncate"><b><?php echo $firstname . " " . $lastname ?></b></p>
                 </div>
                 <div id="user-icon" class="relative">
                     <img src="img/icons/user.svg" alt="user"
