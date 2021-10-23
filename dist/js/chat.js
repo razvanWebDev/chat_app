@@ -5,12 +5,14 @@ window.onload = () => {
   };
   // ============ASYNC======================================
   const chatPanelList = document.querySelector("#chat-panel-list");
+  let refreshChatPanelList = true;
 
   //search members
   const searchMembersBar = document.querySelector("#search-members");
   const searchMembers = () => {
     searchMembersBar.onkeyup = () => {
       let searchTerm = searchMembersBar.value;
+      refreshChatPanelList = searchTerm == "";
       let xhr = new XMLHttpRequest(); //create XML object
       xhr.open("POST", "php/search_members.php", true);
       xhr.onload = () => {
@@ -37,7 +39,9 @@ window.onload = () => {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
           let data = xhr.response;
-          chatPanelList.innerHTML = data;
+          if (refreshChatPanelList) {
+            chatPanelList.innerHTML = data;
+          }
         }
       }
     };
