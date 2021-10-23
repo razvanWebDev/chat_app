@@ -119,7 +119,7 @@ $emailInputValue = isset($_GET['email']) ? $_GET['email'] : "";
 $header_title = "Member request";
 include "php/header.php"; 
 ?>
-    <div class="flex items-center justify-center w-screen min-h-screen bg-blue-100 ">
+    <div class="flex items-center justify-center w-screen min-h-screen py-10 bg-blue-100 ">
         <div id="login-card"
             class="px-8 py-4 space-y-4 text-gray-600 bg-white border-t-4 rounded-lg shadow-lg border-primary w-96">
             <h2 class="text-3xl text-center">New Member</h2>
@@ -187,14 +187,14 @@ include "php/header.php";
                 <span class="text-red-500 ml-2 <?php echo $showRepeatPasswordError ?>" ><?php echo $repeat_password_error_msg ?></span>
 
                 <label
-                    class="flex items-center w-full h-10 px-4 py-3 mt-3 tracking-wide transition-all duration-150 ease-linear bg-white border border-gray-300 rounded-md shadow-sm cursor-pointer hover:bg-blue-50">
+                    class="flex items-center justify-center w-full h-10 px-4 py-3 mt-3 tracking-wide transition-all duration-150 ease-linear bg-white border border-gray-300 rounded-md shadow-sm cursor-pointer hover:bg-blue-50">
                     <img src="img/icons/upload.svg" alt="Select Image" class="w-auto h-full mr-2">
-                    <span class="text-base leading-normal">Select Image</span>
-                    <input type='file' class="hidden" name="m_image" />
+                    <span class="max-w-full pr-4 truncate select-image-span">Select Image</span>
+                    <input type='file' class="hidden chose-image-input" name="m_image"/>
                 </label>
 
                 <button type="submit" name="signup"
-                    class="w-full h-10 py-2 mt-4 text-white transition rounded-md hover:opacity-75 bg-primary">Request
+                    class="w-full h-10 py-2 mt-4 text-white transition rounded-md shadow-sm hover:opacity-75 bg-primary">Request
                     membership</button>
             </form>
             <div class="text-primary">
