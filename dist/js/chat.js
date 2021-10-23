@@ -3,6 +3,48 @@ window.onload = () => {
   const elementExists = (element) => {
     return element != undefined && element != null;
   };
+  // ============ASYNC======================================
+  const chatPanelList = document.querySelector("#chat-panel-list");
+
+  //search members
+  const searchMembersBar = document.querySelector("#search-members");
+  const searchMembers = () => {
+    searchMembersBar.onkeyup = () => {
+      let searchTerm = searchMembersBar.value;
+      let xhr = new XMLHttpRequest(); //create XML object
+      xhr.open("POST", "php/search_members.php", true);
+      xhr.onload = () => {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            let data = xhr.response;
+            chatPanelList.innerHTML = data;
+          }
+        }
+      };
+      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhr.send("searchTerm=" + searchTerm);
+    };
+  };
+  if (elementExists(searchMembersBar)) {
+    searchMembers();
+  }
+
+  //populate chat panel list
+  setInterval(() => {
+    let xhr = new XMLHttpRequest(); //create XML object
+    xhr.open("GET", "php/display_members.php", true);
+    xhr.onload = () => {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          let data = xhr.response;
+          chatPanelList.innerHTML = data;
+        }
+      }
+    };
+    xhr.send();
+  }, 1000);
+
+  // ######################################################
 
   //   logout============================
   const userIcon = document.getElementById("user-icon");
@@ -23,7 +65,6 @@ window.onload = () => {
       }
     });
   }
-
   // #################################
 
   // switch between chat/groups=============;
@@ -59,13 +100,11 @@ window.onload = () => {
       });
     }
   };
-
-  //event listener
   if (elementExists(switchTabs)) {
     switchTabsOnClick();
   }
 
-  // Set current panel item========
+  // Set current panel item======================
   const chatPanelItems = document.querySelectorAll(".chat-panel-item");
   const groupPanelItems = document.querySelectorAll(".group-panel-item");
 
@@ -78,8 +117,6 @@ window.onload = () => {
       });
     });
   };
-
-  // event listeners
   if (elementExists(chatPanelItems)) {
     setCurrentPaneItem(chatPanelItems);
   }
@@ -101,7 +138,9 @@ window.onload = () => {
 
   const showTextWindow = () => {
     panelItems.forEach((item) => {
+      console.log("panelItemssssssssssssssssssssssssssssssss ", panelItems);
       item.addEventListener("click", () => {
+        console.log("clickuuuuuuuuuuuuuuuuuuuuuuuuu");
         textWindow.classList.remove("translate-x-full");
       });
     });
@@ -131,7 +170,7 @@ window.onload = () => {
   });
 
   // ##################################################
-  // Change file input============
+  // Change file input===============================
   const fileInputs = document.querySelectorAll(".chose-image-input");
 
   const changeFileInputs = () => {
@@ -152,4 +191,5 @@ window.onload = () => {
   if (elementExists(fileInputs)) {
     changeFileInputs();
   }
+  // *********************************************
 };

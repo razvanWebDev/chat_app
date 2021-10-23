@@ -9,7 +9,7 @@ if(!isset($_SESSION["m_username"])){
     <div id="main-container" class="flex w-screen h-screen">
 
         <!-- SIDE PANEL -->
-        <div class="flex flex-col w-screen h-screen space-y-6 bg-blue-100 md:w-80 lg:w-96 md:static">
+        <div class="flex flex-col flex-none w-screen h-screen space-y-6 bg-blue-100 md:w-2/5 lg:w-1/3 xl:1/4 md:static">
 
             <!-- side panel chat/group selector -->
             <div class="flex flex-none w-full h-16 bg-blue-200 cursor-pointer">
@@ -27,7 +27,7 @@ if(!isset($_SESSION["m_username"])){
                     <div class="flex justify-between mb-4">
                         <h2 class="text-3xl">Chats</h2>
                     </div>
-                    <input type="text" placeholder="Search users or messages" class="input">
+                    <input id="search-members" type="text" placeholder="Search members" class="input">
                 </div>
                 <!-- chats panel items container -->
                 <div id="chat-panel-list"
@@ -106,7 +106,7 @@ if(!isset($_SESSION["m_username"])){
 
         <!-- TEXT WINDOW -->
         <div id="text-window"
-            class="absolute flex flex-col w-screen h-screen overflow-y-auto transition-transform duration-300 transform translate-x-full shadow-inner md:static md:translate-x-0 bg-gray-50">
+            class="absolute flex flex-col flex-auto w-screen h-screen overflow-y-auto transition-transform duration-300 transform translate-x-full shadow-inner md:static md:translate-x-0 bg-gray-50">
             <!-- top bar -->
             <?php
             $query = "SELECT * FROM members WHERE m_unique_id = {$_SESSION['unique_id']}";
