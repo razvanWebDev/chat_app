@@ -7,7 +7,30 @@ window.onload = () => {
   const chatPanelList = document.querySelector("#chat-panel-list");
   let refreshChatPanelList = true;
 
-  //search members
+  //populate chat panel list
+  const displayMembers = () => {
+    let xhr = new XMLHttpRequest(); //create XML object
+    xhr.open("GET", "php/display_members.php", true);
+    xhr.onload = () => {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          let data = xhr.response;
+          if (refreshChatPanelList) {
+            chatPanelList.innerHTML = data;
+          }
+        }
+      }
+    };
+    xhr.send();
+  };
+  displayMembers();
+  setInterval(() => {
+    displayMembers();
+  }, 3000);
+
+  // ######################################################
+
+  //search members=============
   const searchMembersBar = document.querySelector("#search-members");
   const searchMembers = () => {
     searchMembersBar.onkeyup = () => {
@@ -27,28 +50,71 @@ window.onload = () => {
       xhr.send("searchTerm=" + searchTerm);
     };
   };
+  // cancel search members
+  const cancelSearchMembersBtn = document.querySelector(
+    "#cancel-search-members-btn"
+  );
+  const cancelSearchMembers = () => {
+    cancelSearchMembersBtn.onclick = () => {
+      searchMembersBar.value = "";
+      displayMembers();
+      refreshChatPanelList = true;
+    };
+  };
   if (elementExists(searchMembersBar)) {
     searchMembers();
+    cancelSearchMembers();
+  }
+  // **********************************************************
+  // CHAT WINDOW======================================
+  // send chat
+  const chatBox = document.querySelector("#chat-box");
+  const sendForm = document.querySelector("#send-form");
+  const sendInput = document.querySelector("#send-input");
+  const sendBtn = document.querySelector("#send-btn");
+
+  sendForm.onsubmit = (e) => {
+    e.preventDefault();
+  };
+  const sendMessage = () => {
+    sendBtn.onclick = () => {
+      let xhr = new XMLHttpRequest(); //create XML object
+      xhr.open("POST", "php/insert_chat.php", true);
+      xhr.onload = () => {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            sendInput.value = "";
+          }
+        }
+      };
+      let formData = new FormData(sendForm);
+      xhr.send(formData);
+    };
+  };
+  if (elementExists(sendBtn)) {
+    sendMessage();
   }
 
-  //populate chat panel list
-  setInterval(() => {
+  // get chat
+  const getMessages = () => {
     let xhr = new XMLHttpRequest(); //create XML object
-    xhr.open("GET", "php/display_members.php", true);
+    xhr.open("POST", "php/get_chat.php", true);
     xhr.onload = () => {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
           let data = xhr.response;
-          if (refreshChatPanelList) {
-            chatPanelList.innerHTML = data;
-          }
+          chatBox.innerHTML = data;
         }
       }
     };
-    xhr.send();
-  }, 1000);
+    let formData = new FormData(sendForm);
+    xhr.send(formData);
+  };
+  setInterval(() => {
+    getMessages();
+  }, 500);
 
-  // ######################################################
+  // **************************************************
 
   //   logout============================
   const userIcon = document.getElementById("user-icon");
@@ -167,7 +233,7 @@ window.onload = () => {
     closeButton: true,
     position: ["top", "left"],
     preFetch: true,
-    insertInto: document.querySelector("#send-message-input"),
+    insertInto: sendInput,
     emit(obj, triggerElement) {
       console.log(obj, triggerElement);
     },

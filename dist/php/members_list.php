@@ -2,12 +2,13 @@
     while($row = mysqli_fetch_assoc($select_members)){
         $firstname = $row['m_firstname'];
         $lastname = $row['m_lastname'];
+        $unique_id = $row['m_unique_id'];
         $status = $row['m_status'];
         $status_color = $status == "active" ? "green" : "gray";
         $image = !empty($row['m_image']) ? $row['m_image'] : "member.png";
 
 
-        $output .= '<a href="#" class="panel-item">
+        $output .= '<a href="index.php?member_id='.$unique_id.'" class="panel-item">
                         <div
                             class="flex h-20 p-4 mr-6 transition rounded chat-panel-item hover:bg-blue-300">
                             <div class="flex-none w-16">

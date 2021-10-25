@@ -106,7 +106,8 @@ function uploadFile($fileName, $fileTmpName, $fileSize, $fileType, $path){
       echo "You cannot upload files of this type";
     }
   }
-  return "";
+  //return name if no image is selected
+  return "member.png";
 }
 
 ?>

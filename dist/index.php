@@ -27,7 +27,14 @@ if(!isset($_SESSION["m_username"])){
                     <div class="flex justify-between mb-4">
                         <h2 class="text-3xl">Chats</h2>
                     </div>
-                    <input id="search-members" type="text" placeholder="Search members" class="input">
+                    <div class="flex h-10 mt-4 rounded-md shadow-sm">
+                        <input type="text" id="search-members" placeholder="Search members"
+                            class="flex-1 block border-r-0 rounded-none input rounded-l-md sm:text-sm" placeholder="Password*">
+                        <div id="cancel-search-members-btn" 
+                            class="flex items-center justify-center w-12 h-full text-2xl text-white transition border border-l-0 border-gray-300 cursor-pointer hover:opacity-75 bg-primary rounded-r-md ">
+                            <span>&times;</span>
+                        </div>
+                    </div>
                 </div>
                 <!-- chats panel items container -->
                 <div id="chat-panel-list"
@@ -114,6 +121,7 @@ if(!isset($_SESSION["m_username"])){
             if(mysqli_num_rows($select_member) > 0){
                 $row = mysqli_fetch_assoc($select_member);
 
+
                 $firstname = $row['m_firstname'];
                 $lastname = $row['m_lastname'];
                 $image = !empty($row['m_image']) ? $row['m_image'] : "member.png";
@@ -143,130 +151,20 @@ if(!isset($_SESSION["m_username"])){
                 </div>
             </div>
             <!-- chat window -->
-            <div
-                class="flex flex-col-reverse flex-auto gap-8 pb-16 pl-8 pr-10 overflow-y-auto bg-white shadow-inner md:pr-16 md:pl-14 scrollbar-thin scrollbar-track-blue-50 scrollbar-thumb-blue-300">
+            <div id="chat-box"
+                class="flex flex-col justify-end flex-auto gap-8 pb-16 pl-8 pr-10 overflow-y-auto bg-white shadow-inner md:pr-16 md:pl-14 scrollbar-thin scrollbar-track-blue-50 scrollbar-thumb-blue-300">
                 <!-- chat items -->
-                <div class="max-w-3/4 w-max">
-                    <div class="relative self-start px-4 py-1 text-white rounded-lg bg-primary">
-                        <p> 1 Hello Lorem ipsum dolor sit amet consectetur</p>
-                        <div class="absolute p-1 bg-white rounded-full -left-6 -bottom-6">
-                            <div style="background-image: url(img/users/user.png)"
-                                class="w-8 h-8 bg-center bg-cover rounded-full ">
-                            </div>
-
-                        </div>
-                    </div>
-                    <p class="ml-5 text-xs text-gray-500">12:39 am</p>
-                </div>
-                <div class="self-end max-w-3/4 w-max">
-                    <div class="relative px-4 py-1 bg-gray-100 rounded-lg">
-                        <p>2 Hello again!</p>
-                        <div class="absolute p-1 bg-white rounded-full -right-4 -bottom-4">
-                            <div style="background-image: url(img/users/user.png)"
-                                class="w-6 h-6 bg-center bg-cover rounded-full ">
-                            </div>
-                        </div>
-                    </div>
-                    <p class="mr-5 text-xs text-right text-gray-500">12:39 am</p>
-                </div>
-                <div class="relative self-start px-4 py-1 text-white bg-blue-600 max-w-3/4 rounded-xl">
-                    3 Hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, debitis?! Lorem ipsum dolor
-                    sit amet consectetur adipisicing elit.
-                    <div class="absolute p-1 bg-white rounded-full -left-4 -bottom-4">
-                        <div style="background-image: url(img/users/user.png)"
-                            class="w-6 h-6 bg-center bg-cover rounded-full ">
-                        </div>
-
-                    </div>
-                </div>
-                <div class="relative self-end px-4 py-1 bg-gray-100 max-w-3/4 rounded-xl">
-                    4 Hello again!
-                    <div class="absolute p-1 bg-white rounded-full -right-4 -bottom-4">
-                        <div style="background-image: url(img/users/user.png)"
-                            class="w-6 h-6 bg-center bg-cover rounded-full ">
-                        </div>
-                    </div>
-                </div>
-                <div class="relative self-start px-4 py-1 text-white bg-blue-600 max-w-3/4 rounded-xl">
-                    Hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, debitis?! Lorem ipsum dolor
-                    sit amet consectetur adipisicing elit. Facere modi veritatis sed quas quis doloremque voluptates
-                    dolore! Rerum, nesciunt harum.
-                    <div class="absolute p-1 bg-white rounded-full -left-4 -bottom-4">
-                        <div style="background-image: url(img/users/user.png)"
-                            class="w-6 h-6 bg-center bg-cover rounded-full ">
-                        </div>
-
-                    </div>
-                </div>
-                <div class="relative self-end px-4 py-1 bg-gray-100 max-w-3/4 rounded-xl">
-                    Hello again!
-                    <div class="absolute p-1 bg-white rounded-full -right-4 -bottom-4">
-                        <div style="background-image: url(img/users/user.png)"
-                            class="w-6 h-6 bg-center bg-cover rounded-full ">
-                        </div>
-                    </div>
-                </div>
-                <div class="relative self-start px-4 py-1 text-white bg-blue-600 max-w-3/4 rounded-xl">
-                    Hello Lorem ipsum dolor sit amet consectetur amodi veritatis sed quas quis doloremque voluptates
-                    dolore! Rerum, nesciunt harum.
-                    <div class="absolute p-1 bg-white rounded-full -left-4 -bottom-4">
-                        <div style="background-image: url(img/users/user.png)"
-                            class="w-6 h-6 bg-center bg-cover rounded-full ">
-                        </div>
-
-                    </div>
-                </div>
-                <div class="relative self-end px-4 py-1 bg-gray-100 max-w-3/4 rounded-xl">
-                    Hello again!
-                    <div class="absolute p-1 bg-white rounded-full -right-4 -bottom-4">
-                        <div style="background-image: url(img/users/user.png)"
-                            class="w-6 h-6 bg-center bg-cover rounded-full ">
-                        </div>
-                    </div>
-                </div>
-                <div class="relative self-start px-4 py-1 text-white bg-blue-600 max-w-3/4 rounded-xl">
-                    Hello Lorem ipsum dolor sit amet
-                    <div class="absolute p-1 bg-white rounded-full -left-4 -bottom-4">
-                        <div style="background-image: url(img/users/user.png)"
-                            class="w-6 h-6 bg-center bg-cover rounded-full ">
-                        </div>
-
-                    </div>
-                </div>
-                <div class="relative self-end px-4 py-1 bg-gray-100 max-w-3/4 rounded-xl">
-                    Hello again!
-                    <div class="absolute p-1 bg-white rounded-full -right-4 -bottom-4">
-                        <div style="background-image: url(img/users/user.png)"
-                            class="w-6 h-6 bg-center bg-cover rounded-full ">
-                        </div>
-                    </div>
-                </div>
-                <div class="relative self-start px-4 py-1 text-white bg-blue-600 max-w-3/4 rounded-xl">
-                    Hello Lorem ipsum dolor sit amet c
-                    <div class="absolute p-1 bg-white rounded-full -left-4 -bottom-4">
-                        <div style="background-image: url(img/users/user.png)"
-                            class="w-6 h-6 bg-center bg-cover rounded-full ">
-                        </div>
-
-                    </div>
-                </div>
-                <div class="relative self-end px-4 py-1 bg-gray-100 max-w-3/4 rounded-xl">
-                    Hello again!
-                    <div class="absolute p-1 bg-white rounded-full -right-4 -bottom-4">
-                        <div style="background-image: url(img/users/user.png)"
-                            class="w-6 h-6 bg-center bg-cover rounded-full ">
-                        </div>
-                    </div>
-                </div>
             </div>
             <!-- bottom bar -->
             <div class="flex flex-none px-8 py-4 border-t md:px-12">
-                <form action="" class="flex items-center w-full space-x-6">
-                    <input id="send-message-input" type="text" class="input" placeholder="Enter message...">
+                <form action="" id="send-form" class="flex items-center w-full space-x-6" autocomplete="off">
+                    <?php $member_id = isset($_GET['member_id']) ? $_GET['member_id'] : ""; ?>
+                    <input type="text" name="incoming_id"  value="<?php echo $member_id ?>" hidden>
+                    <input id="send-input" name="message" type="text" class="input" placeholder="Enter message...">
                     <img id="emojis-btn" src="img/icons/emoji.svg" alt="emojis"
                         class="h-6 transition cursor-pointer hover:opacity-75">
-                    <img id="send-message" src="img/icons/send.svg" alt="send message"
-                        class="h-10 transition cursor-pointer active:opacity-75">
+                    <button id="send-btn"><img id="send-message" src="img/icons/send.svg" alt="send message"
+                        class="h-10 transition cursor-pointer active:opacity-75"></button>
                 </form>
             </div>
         </div>

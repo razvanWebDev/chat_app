@@ -10,6 +10,8 @@
 
     if(mysqli_num_rows($select_members) > 0){
         include "members_list.php";
+    }else{
+        $output = "No member related to your search term";
     }
     echo $output;
 ?>
