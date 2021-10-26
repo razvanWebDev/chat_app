@@ -1,4 +1,6 @@
 window.onload = () => {
+  let panelItems = document.querySelectorAll(".panel-item");
+
   const chatBox = document.querySelector("#chat-box");
   const chatBoxContainer = document.querySelector("#chat-box-container");
   const sendForm = document.querySelector("#send-form");
@@ -30,6 +32,7 @@ window.onload = () => {
           let data = xhr.response;
           if (refreshChatPanelList) {
             chatPanelList.innerHTML = data;
+            showTextWindow();
           }
         }
       }
@@ -215,7 +218,6 @@ window.onload = () => {
   }
 
   // Show-hide side panel on mobile===============
-  const panelItems = document.querySelectorAll(".panel-item");
 
   const showSidePanelArrow = document.querySelector("#show-side-panel-arrow");
   const textWindow = document.querySelector("#text-window");
@@ -227,10 +229,9 @@ window.onload = () => {
   };
 
   const showTextWindow = () => {
+    panelItems = document.querySelectorAll(".panel-item");
     panelItems.forEach((item) => {
-      console.log("panelItemssssssssssssssssssssssssssssssss ", panelItems);
       item.addEventListener("click", () => {
-        console.log("clickuuuuuuuuuuuuuuuuuuuuuuuuu");
         textWindow.classList.remove("translate-x-full");
       });
     });
