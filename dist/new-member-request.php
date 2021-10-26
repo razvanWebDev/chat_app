@@ -205,4 +205,4 @@ include "php/header.php";
         </div>
     </div>
 
-<?php include "php/footer.php"; ?>
+<?php include "php/login_footer.php"; ?>

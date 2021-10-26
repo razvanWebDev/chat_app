@@ -251,7 +251,7 @@ window.onload = () => {
   });
 
   // ##################################################
-  // Change file input===============================
+  // Change input type file when file is selected
   const fileInputs = document.querySelectorAll(".chose-image-input");
 
   const changeFileInputs = () => {

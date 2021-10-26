@@ -94,4 +94,4 @@ if(isset($_SESSION["m_username"])){
         </div>
     </div>
 
-<?php include "php/footer.php"; ?>
+<?php include "php/login_footer.php"; ?>
