@@ -23,12 +23,11 @@ if(isset($_SESSION['unique_id'])){
 
         if(mysqli_num_rows($getMessages) > 0){
             while($row = mysqli_fetch_assoc($getMessages)){
-                $msgTimestamp = strtotime($row['timestamp']);
                 //show message time
-                $msgTime = date('Y/m/d, H:i', $msgTimestamp);
-                //TODO check if message was sent yesterday or before
-                $dateDiff = date("Ymd") -  date("Ymd", $msgTimestamp);
-                $dateShown = $dateDiff == 0 ? "" : $dateDiff == 1 ? "Yesterday" : date("Y : m : d", $msgTimestamp);
+                $msgTimestamp = strtotime($row['timestamp']);
+               //check if the last msg was today
+                $dateDiff = date("Ymd") - date("Ymd", $msgTimestamp);
+                $msgTime = $dateDiff == 0 ? date('H:i', $msgTimestamp) : ($dateDiff == 1 ? "Yesterday, ".date('H:i', $msgTimestamp) : date('Y/m/d, H:i', $msgTimestamp));
    
                 if((int)$row['outgoing_msg_id'] === $outgoing_id){//send message
                     $output .= '<div class="max-w-3/4 w-max">
