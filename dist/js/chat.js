@@ -24,9 +24,9 @@ window.onload = () => {
     xhr.send();
   };
   displayMembers();
-  setInterval(() => {
-    displayMembers();
-  }, 3000);
+  // setInterval(() => {
+  //   displayMembers();
+  // }, 3000);
 
   // ######################################################
 
@@ -69,6 +69,7 @@ window.onload = () => {
   // CHAT WINDOW======================================
   // send chat
   const chatBox = document.querySelector("#chat-box");
+  const chatBoxContainer = document.querySelector("#chat-box-container");
   const sendForm = document.querySelector("#send-form");
   const sendInput = document.querySelector("#send-input");
   const sendBtn = document.querySelector("#send-btn");
@@ -84,6 +85,8 @@ window.onload = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
           if (xhr.status === 200) {
             sendInput.value = "";
+            getMessages();
+            scrollChatToBottom();
           }
         }
       };
@@ -110,11 +113,19 @@ window.onload = () => {
     let formData = new FormData(sendForm);
     xhr.send(formData);
   };
-  setInterval(() => {
-    getMessages();
-  }, 500);
+  //get messages on load
+  getMessages();
+  //get messages @ interval
+  // setInterval(() => {
+  //   getMessages();
+  // }, 500);
 
   // **************************************************
+  function scrollChatToBottom() {
+    console.log(chatBoxContainer.scrollHeight);
+    chatBoxContainer.scrollTop = chatBoxContainer.scrollHeight;
+  }
+  scrollChatToBottom();
 
   //   logout============================
   const userIcon = document.getElementById("user-icon");

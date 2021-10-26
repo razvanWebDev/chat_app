@@ -12,12 +12,12 @@ if(!isset($_SESSION["m_username"])){
         <div class="flex flex-col flex-none w-screen h-screen space-y-6 bg-blue-100 md:w-2/5 lg:w-1/3 xl:1/4 md:static">
 
             <!-- side panel chat/group selector -->
-            <div class="flex flex-none w-full h-16 bg-blue-200 cursor-pointer">
-                <div class="flex justify-center w-2/4 h-16 p-4 bg-blue-100 switch-tab" data-switch="chat">
-                    <img id="chat-icon" src="img/icons/chat.svg" alt="chat" class="w-full opacity-100 switch-icon">
+            <div class="flex flex-none w-full h-20 bg-blue-200 cursor-pointer">
+                <div class="flex justify-center w-2/4 h-full p-4 py-6 bg-blue-100 switch-tab" data-switch="chat">
+                    <img id="chat-icon" src="img/icons/chat.svg" alt="chat" class="h-full opacity-100 switch-icon">
                 </div>
-                <div class="flex justify-center w-2/4 h-16 p-4 switch-tab" data-switch="groups">
-                    <img id="groups-icon" src="img/icons/users.svg" alt="groups" class="w-full opacity-50 switch-icon">
+                <div class="flex justify-center w-2/4 h-full p-4 py-6 switch-tab" data-switch="groups">
+                    <img id="groups-icon" src="img/icons/users.svg" alt="groups" class="h-full opacity-50 switch-icon">
                 </div>
             </div>
             <!-- Chats Panel -->
@@ -25,7 +25,7 @@ if(!isset($_SESSION["m_username"])){
                 <!-- chats panel title -->
                 <div class="flex-none mr-6 h-36">
                     <div class="flex justify-between mb-4">
-                        <h2 class="text-3xl">Chats</h2>
+                        <h2 class="text-3xl">Chat</h2>
                     </div>
                     <div class="flex h-10 mt-4 rounded-md shadow-sm">
                         <input type="text" id="search-members" placeholder="Search members"
@@ -113,22 +113,23 @@ if(!isset($_SESSION["m_username"])){
 
         <!-- TEXT WINDOW -->
         <div id="text-window"
-            class="absolute flex flex-col flex-auto w-screen h-screen overflow-y-auto transition-transform duration-300 transform translate-x-full shadow-inner md:static md:translate-x-0 bg-gray-50">
-            <!-- top bar -->
+            class="absolute flex flex-col w-screen h-screen overflow-y-auto transition-transform duration-300 transform translate-x-full shadow-inner md:static md:translate-x-0 bg-gray-50">
             <?php
-            $query = "SELECT * FROM members WHERE m_unique_id = {$_SESSION['unique_id']}";
-            $select_member = mysqli_query($connection, $query);
-            if(mysqli_num_rows($select_member) > 0){
-                $row = mysqli_fetch_assoc($select_member);
-
-
-                $firstname = $row['m_firstname'];
-                $lastname = $row['m_lastname'];
-                $image = !empty($row['m_image']) ? $row['m_image'] : "member.png";
+            if(isset($_GET['member_id'])){
+                $query = "SELECT * FROM members WHERE m_unique_id = {$_GET['member_id']}";
+                $select_member = mysqli_query($connection, $query);
+                if(mysqli_num_rows($select_member) > 0){
+                    $row = mysqli_fetch_assoc($select_member);
+    
+    
+                    $firstname = $row['m_firstname'];
+                    $lastname = $row['m_lastname'];
+                    $image = !empty($row['m_image']) ? $row['m_image'] : "member.png";
+                }
             }
-
             ?>
-            <div class="flex items-center justify-between flex-none w-full px-6 py-4 border-b md:px-12">
+            <!-- top bar -->
+            <div class="flex items-center justify-between flex-none w-full h-20 px-6 py-4 border-b md:px-12">
                 <div class="flex items-center">
                     <img src="img/icons/arrow-left.svg" alt="back" id="show-side-panel-arrow"
                         class="w-6 mr-4 cursor-pointer md:hidden">
@@ -151,10 +152,13 @@ if(!isset($_SESSION["m_username"])){
                 </div>
             </div>
             <!-- chat window -->
-            <div id="chat-box"
-                class="flex flex-col justify-end flex-auto gap-8 pb-16 pl-8 pr-10 overflow-y-auto bg-white shadow-inner md:pr-16 md:pl-14 scrollbar-thin scrollbar-track-blue-50 scrollbar-thumb-blue-300">
-                <!-- chat items -->
+            <div id="chat-box-container" class="flex-auto overflow-y-auto shadow-inner scrollbar-thin scrollbar-track-blue-50 scrollbar-thumb-blue-300">
+                <div id="chat-box"
+                    class="flex flex-col justify-end min-h-full gap-8 pb-16 pl-8 pr-10 bg-white md:pr-16 md:pl-14">
+                    <!-- chat items --> 
+                </div>
             </div>
+
             <!-- bottom bar -->
             <div class="flex flex-none px-8 py-4 border-t md:px-12">
                 <form action="" id="send-form" class="flex items-center w-full space-x-6" autocomplete="off">

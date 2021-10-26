@@ -17,7 +17,8 @@ if(isset($_SESSION['unique_id'])){
         }
 
         //get messages
-        $query = "SELECT * FROM messages WHERE (outgoing_msg_id = {$outgoing_id} AND incomming_msg_id = {$incoming_id}) OR (outgoing_msg_id = {$incoming_id} AND incomming_msg_id = {$outgoing_id}) ORDER BY msg_id";
+        $query = "SELECT * FROM messages WHERE (outgoing_msg_id = {$outgoing_id} AND incomming_msg_id = {$incoming_id})";
+        $query .= " OR (outgoing_msg_id = {$incoming_id} AND incomming_msg_id = {$outgoing_id}) ORDER BY msg_id";
         $getMessages = mysqli_query($connection, $query);
 
         if(mysqli_num_rows($getMessages) > 0){
@@ -31,7 +32,7 @@ if(isset($_SESSION['unique_id'])){
    
                 if((int)$row['outgoing_msg_id'] === $outgoing_id){//send message
                     $output .= '<div class="max-w-3/4 w-max">
-                                    <div class="relative self-start px-4 py-1 text-white rounded-lg bg-primary">
+                                    <div class="relative self-start px-4 py-1 text-white rounded-lg shadow bg-primary">
                                         <p>'.$row['msg'].'</p>
                                         <div class="absolute p-1 bg-white rounded-full -left-6 -bottom-6">
                                             <div style="background-image: url(img/members/'.$_SESSION['m_image'].')"
@@ -43,7 +44,7 @@ if(isset($_SESSION['unique_id'])){
                                 </div>';
                 }else{//receive message
                     $output .= '<div class="self-end max-w-3/4 w-max">
-                                    <div class="relative px-4 py-1 bg-gray-100 rounded-lg">
+                                    <div class="relative px-4 py-1 bg-gray-100 rounded-lg shadow">
                                         <p>'.$row['msg'].'</p>
                                         <div class="absolute p-1 bg-white rounded-full -right-4 -bottom-4">
                                             <div style="background-image: url(img/members/'.$incoming_member_img.')"
