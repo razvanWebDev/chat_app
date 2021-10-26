@@ -53,10 +53,13 @@ function createUser($firstname, $lastname, $username, $email,  $image, $password
 }
 
 function loginUser($username, $password){
+  global $connection;
   $userExists = userExists($username, $username);
 
   $hashed_password = $userExists["m_password"];
   $check_passwords = password_verify($password, $hashed_password);
+
+  $errorMsg = $userErr = $pwdErr = "";
 
   if(empty($username)){
     $userErr = "&user=required";
@@ -76,10 +79,14 @@ function loginUser($username, $password){
     header("Location: ../login.php?login=failed$errorMsg");
     exit();
   }elseif($check_passwords === true){
+    $status = 'active';
+    $query = "UPDATE members SET m_status='{$status}' WHERE m_unique_id = {$userExists["m_unique_id"]}";
+    $setStatusQuery =  mysqli_query($connection, $query);
     $_SESSION["memberId"] = $userExists["m_id"];
     $_SESSION["unique_id"] = $userExists["m_unique_id"];
     $_SESSION["m_username"] = $userExists["m_username"];
     $_SESSION["m_image"] = $userExists["m_image"];
+    $_SESSION["m_status"] = $userExists["m_status"];
 
     header("Location: ../index.php");
     exit();

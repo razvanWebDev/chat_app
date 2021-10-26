@@ -114,6 +114,9 @@ if(!isset($_SESSION["m_username"])){
         <!-- TEXT WINDOW -->
         <div id="text-window"
             class="absolute flex flex-col w-screen h-screen overflow-y-auto transition-transform duration-300 transform translate-x-full shadow-inner md:static md:translate-x-0 bg-gray-50">
+            <!-- top bar -->
+            <div class="flex items-center justify-between flex-none w-full h-20 px-6 py-4 border-b md:px-12">
+                <div class="flex items-center">
             <?php
             if(isset($_GET['member_id'])){
                 $query = "SELECT * FROM members WHERE m_unique_id = {$_GET['member_id']}";
@@ -125,19 +128,19 @@ if(!isset($_SESSION["m_username"])){
                     $firstname = $row['m_firstname'];
                     $lastname = $row['m_lastname'];
                     $image = !empty($row['m_image']) ? $row['m_image'] : "member.png";
-                }
-            }
+                    $status = $row['m_status'];
+                    $status_color = ($status == "active" ? "green" : "gray");
+
             ?>
-            <!-- top bar -->
-            <div class="flex items-center justify-between flex-none w-full h-20 px-6 py-4 border-b md:px-12">
-                <div class="flex items-center">
                     <img src="img/icons/arrow-left.svg" alt="back" id="show-side-panel-arrow"
                         class="w-6 mr-4 cursor-pointer md:hidden">
                     <div style="background-image: url(img/members/<?php echo $image ?>)"
                         class="relative w-12 h-12 mr-3 bg-center bg-cover rounded-full user-image">
-                        <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-400 rounded-full"></div>
+                        <div class="absolute bottom-0 right-0 w-3 h-3 bg-<?php echo $status_color ?>-400 rounded-full"></div>
                     </div>
                     <p class="text-sm truncate"><b><?php echo $firstname . " " . $lastname ?></b></p>
+            <?php }
+            } ?>
                 </div>
                 <div id="user-icon" class="relative">
                     <img src="img/icons/user.svg" alt="user"
@@ -152,7 +155,7 @@ if(!isset($_SESSION["m_username"])){
                 </div>
             </div>
             <!-- chat window -->
-            <div id="chat-box-container" class="flex-auto overflow-y-auto shadow-inner scrollbar-thin scrollbar-track-blue-50 scrollbar-thumb-blue-300">
+            <div id="chat-box-container" class="flex-auto overflow-y-auto shadow-inner h- scrollbar-thin scrollbar-track-blue-50 scrollbar-thumb-blue-300">
                 <div id="chat-box"
                     class="flex flex-col justify-end min-h-full gap-8 pb-16 pl-8 pr-10 bg-white md:pr-16 md:pl-14">
                     <!-- chat items --> 
@@ -160,7 +163,7 @@ if(!isset($_SESSION["m_username"])){
             </div>
 
             <!-- bottom bar -->
-            <div class="flex flex-none px-8 py-4 border-t md:px-12">
+            <div class="flex flex-none h-24 px-8 py-4 border-t md:px-12">
                 <form action="" id="send-form" class="flex items-center w-full space-x-6" autocomplete="off">
                     <?php $member_id = isset($_GET['member_id']) ? $_GET['member_id'] : ""; ?>
                     <input type="text" name="incoming_id"  value="<?php echo $member_id ?>" hidden>

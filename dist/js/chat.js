@@ -1,4 +1,9 @@
 window.onload = () => {
+  const chatBox = document.querySelector("#chat-box");
+  const chatBoxContainer = document.querySelector("#chat-box-container");
+  const sendForm = document.querySelector("#send-form");
+  const sendInput = document.querySelector("#send-input");
+  const sendBtn = document.querySelector("#send-btn");
   // Check if element exists before calling function
   const elementExists = (element) => {
     return element != undefined && element != null;
@@ -6,6 +11,14 @@ window.onload = () => {
   // ============ASYNC======================================
   const chatPanelList = document.querySelector("#chat-panel-list");
   let refreshChatPanelList = true;
+
+  //stop chat from scrolling to bottom whe the user scrolles
+  chatBox.onmouseenter = () => {
+    refreshChatPanelList = false;
+  };
+  chatBox.onmouseleave = () => {
+    refreshChatPanelList = true;
+  };
 
   //populate chat panel list
   const displayMembers = () => {
@@ -24,9 +37,9 @@ window.onload = () => {
     xhr.send();
   };
   displayMembers();
-  // setInterval(() => {
-  //   displayMembers();
-  // }, 3000);
+  setInterval(() => {
+    displayMembers();
+  }, 1500);
 
   // ######################################################
 
@@ -67,13 +80,11 @@ window.onload = () => {
   }
   // **********************************************************
   // CHAT WINDOW======================================
+  const scrollChatToBottom = () => {
+    chatBoxContainer.scrollTo(0, chatBoxContainer.scrollHeight);
+  };
+  scrollChatToBottom();
   // send chat
-  const chatBox = document.querySelector("#chat-box");
-  const chatBoxContainer = document.querySelector("#chat-box-container");
-  const sendForm = document.querySelector("#send-form");
-  const sendInput = document.querySelector("#send-input");
-  const sendBtn = document.querySelector("#send-btn");
-
   sendForm.onsubmit = (e) => {
     e.preventDefault();
   };
@@ -107,6 +118,9 @@ window.onload = () => {
         if (xhr.status === 200) {
           let data = xhr.response;
           chatBox.innerHTML = data;
+          if (refreshChatPanelList) {
+            scrollChatToBottom();
+          }
         }
       }
     };
@@ -116,16 +130,11 @@ window.onload = () => {
   //get messages on load
   getMessages();
   //get messages @ interval
-  // setInterval(() => {
-  //   getMessages();
-  // }, 500);
+  setInterval(() => {
+    getMessages();
+  }, 500);
 
   // **************************************************
-  function scrollChatToBottom() {
-    console.log(chatBoxContainer.scrollHeight);
-    chatBoxContainer.scrollTop = chatBoxContainer.scrollHeight;
-  }
-  scrollChatToBottom();
 
   //   logout============================
   const userIcon = document.getElementById("user-icon");
