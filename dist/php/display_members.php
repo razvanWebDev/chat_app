@@ -2,7 +2,9 @@
 <?php session_start(); ?>
 
 <?php
-$query = "SELECT * FROM members";
+ $outgoing_id = $_SESSION['unique_id'];
+
+$query = "SELECT * FROM members WHERE NOT m_unique_id={$outgoing_id}";
 $select_members = mysqli_query($connection, $query);
 
 $output = "";
