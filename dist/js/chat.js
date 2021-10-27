@@ -1,6 +1,9 @@
 window.onload = () => {
   let panelItems = document.querySelectorAll(".panel-item");
 
+  const incomingImageContainer = document.querySelector(
+    "#incoming-image-container"
+  );
   const chatBox = document.querySelector("#chat-box");
   const chatBoxContainer = document.querySelector("#chat-box-container");
   const sendForm = document.querySelector("#send-form");
@@ -12,6 +15,7 @@ window.onload = () => {
   };
   // ============ASYNC======================================
   const chatPanelList = document.querySelector("#chat-panel-list");
+  const incomingIdInput = document.querySelector("#incoming-id-input");
   let refreshChatPanelList = true;
 
   //stop chat from scrolling to bottom whe the user scrolles
@@ -21,6 +25,51 @@ window.onload = () => {
   chatBox.onmouseleave = () => {
     refreshChatPanelList = true;
   };
+
+  //Set SESSION['incoming_id'] when click on a panel item
+  const setCurrentIncomingId = () => {
+    panelItems = document.querySelectorAll(".panel-item");
+    panelItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        const incomingId = item.getAttribute("data-id");
+        let xhr = new XMLHttpRequest(); //create XML object
+        xhr.open(
+          "GET",
+          "php/set_session_incoming_id.php?id=" + incomingId,
+          true
+        );
+        xhr.onload = () => {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+              getMessages();
+              displayMembers();
+            }
+          }
+        };
+        xhr.send();
+        //set incoming image for top bar
+        setIncomingImage();
+        //show text window if on mobile
+        showTextWindow();
+      });
+    });
+  };
+
+  //Set incoming image for the top bar
+  const setIncomingImage = () => {
+    let xhr = new XMLHttpRequest(); //create XML object
+    xhr.open("GET", "php/set_incoming_image.php", true);
+    xhr.onload = () => {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          let data = xhr.response;
+          incomingImageContainer.innerHTML = data;
+        }
+      }
+    };
+    xhr.send();
+  };
+  setIncomingImage();
 
   //populate chat panel list
   const displayMembers = () => {
@@ -32,7 +81,7 @@ window.onload = () => {
           let data = xhr.response;
           if (refreshChatPanelList) {
             chatPanelList.innerHTML = data;
-            showTextWindow();
+            setCurrentIncomingId();
           }
         }
       }
@@ -42,7 +91,7 @@ window.onload = () => {
   displayMembers();
   setInterval(() => {
     displayMembers();
-  }, 1500);
+  }, 3000);
 
   // ######################################################
 
@@ -83,6 +132,35 @@ window.onload = () => {
   }
   // **********************************************************
   // CHAT WINDOW======================================
+
+  // get chat
+  const getMessages = () => {
+    let xhr = new XMLHttpRequest(); //create XML object
+    xhr.open("POST", "php/get_chat.php", true);
+    xhr.onload = () => {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          let data = xhr.response;
+          chatBox.innerHTML = data;
+          if (refreshChatPanelList) {
+            scrollChatToBottom();
+          }
+          //Put curent panel-item on top of the list
+          displayMembers();
+        }
+      }
+    };
+    let formData = new FormData(sendForm);
+    xhr.send(formData);
+  };
+  //get messages on load
+  getMessages();
+  //get messages @ interval
+  setInterval(() => {
+    getMessages();
+  }, 500);
+
+  //
   const scrollChatToBottom = () => {
     chatBoxContainer.scrollTo(0, chatBoxContainer.scrollHeight);
   };
@@ -111,31 +189,6 @@ window.onload = () => {
   if (elementExists(sendBtn)) {
     sendMessage();
   }
-
-  // get chat
-  const getMessages = () => {
-    let xhr = new XMLHttpRequest(); //create XML object
-    xhr.open("POST", "php/get_chat.php", true);
-    xhr.onload = () => {
-      if (xhr.readyState === XMLHttpRequest.DONE) {
-        if (xhr.status === 200) {
-          let data = xhr.response;
-          chatBox.innerHTML = data;
-          if (refreshChatPanelList) {
-            scrollChatToBottom();
-          }
-        }
-      }
-    };
-    let formData = new FormData(sendForm);
-    xhr.send(formData);
-  };
-  //get messages on load
-  getMessages();
-  //get messages @ interval
-  setInterval(() => {
-    getMessages();
-  }, 500);
 
   // **************************************************
 
@@ -197,26 +250,6 @@ window.onload = () => {
     switchTabsOnClick();
   }
 
-  // Set current panel item======================
-  const chatPanelItems = document.querySelectorAll(".chat-panel-item");
-  const groupPanelItems = document.querySelectorAll(".group-panel-item");
-
-  const setCurrentPaneItem = (items) => {
-    items.forEach((item) => {
-      item.addEventListener("click", () => {
-        console.log("click");
-        items.forEach((item) => item.classList.remove("active-panel-item"));
-        item.classList.add("active-panel-item");
-      });
-    });
-  };
-  if (elementExists(chatPanelItems)) {
-    setCurrentPaneItem(chatPanelItems);
-  }
-  if (elementExists(groupPanelItems)) {
-    setCurrentPaneItem(groupPanelItems);
-  }
-
   // Show-hide side panel on mobile===============
 
   const showSidePanelArrow = document.querySelector("#show-side-panel-arrow");
@@ -224,26 +257,17 @@ window.onload = () => {
 
   const hideTextWindow = () => {
     showSidePanelArrow.addEventListener("click", () => {
+      chatBox.innerHTML = "";
       textWindow.classList.add("translate-x-full");
     });
   };
-
-  const showTextWindow = () => {
-    panelItems = document.querySelectorAll(".panel-item");
-    panelItems.forEach((item) => {
-      item.addEventListener("click", () => {
-        textWindow.classList.remove("translate-x-full");
-      });
-    });
-  };
-
-  //   event listeners
   if (elementExists(showSidePanelArrow)) {
     hideTextWindow();
   }
-  if (elementExists(panelItems)) {
-    showTextWindow();
-  }
+
+  const showTextWindow = () => {
+    textWindow.classList.remove("translate-x-full");
+  };
 
   //   ###############################################
 

@@ -5,7 +5,7 @@
 <?php
 if(isset($_SESSION['unique_id'])){
     $outgoing_id = $_SESSION['unique_id'];
-    $incoming_id = escape($_POST['incoming_id']);
+    $incoming_id = $_SESSION['incoming_id'];
     $output = "";
 
     if(!empty($incoming_id)){

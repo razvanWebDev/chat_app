@@ -8,6 +8,8 @@
         $status_color = ($status == "active" ? "green" : "gray");
         $image = !empty($row['m_image']) ? $row['m_image'] : "member.png";
 
+        $currentPanelItem = ($unique_id == $_SESSION['incoming_id'] ? "active-panel-item" : "");
+
         //Get last message
         $getLastMsgQuery = "SELECT * FROM messages WHERE 
             (incomming_msg_id = {$unique_id} OR outgoing_msg_id = {$unique_id})
@@ -31,29 +33,27 @@
         }
 
         //Display member
-        $output .= '<a href="index.php?member_id='.$unique_id.'" class="panel-item">
-                        <div
-                            class="flex h-20 p-4 mb-2 mr-6 transition rounded bg-gray-50 chat-panel-item hover:bg-blue-300">
-                            <div class="flex-none w-16">
-                                <div style="background-image: url(img/members/'.$image.')"
-                                    class="relative w-12 h-12 mr-3 bg-center bg-cover rounded-full user-image">
-                                    <div class="absolute bottom-0 right-0 w-3 h-3 bg-'.$status_color.'-400 rounded-full"></div>
-                                </div>
-                            </div>
-                            <div class="flex flex-col flex-auto h-full truncate justify-evenly">
-                                <div class="flex w-full max-w-full overflow-hidden truncate">
-                                    <p class="flex-auto text-sm truncate">
-                                        <b>'.$firstname . " " . $lastname.'</b>
-                                    </p>
-                                    <p class="flex-none float-right ml-2 text-xs text-gray-500">'.$lastMsgTime.'</p>
-                                </div>
-                                <div>
-                                    <p class="w-full text-xs text-gray-500 truncate">
-                                        '.$you.$lastMsg.'
-                                    </p>
-                                </div>
+        $output .= '<div data-id="'.$unique_id.'"
+                        class="'.$currentPanelItem.' flex h-18 py-2 px-4 mb-2 mr-6 transition rounded cursor-pointer bg-gray-50 panel-item chat-panel-item">
+                        <div class="flex-none w-16">
+                            <div style="background-image: url(img/members/'.$image.')"
+                                class="relative w-12 h-12 mr-3 bg-center bg-cover rounded-full user-image">
+                                <div class="absolute bottom-0 right-0 w-3 h-3 bg-'.$status_color.'-400 rounded-full"></div>
                             </div>
                         </div>
-                    </a>';
+                        <div class="flex flex-col flex-auto h-full truncate justify-evenly">
+                            <div class="flex w-full max-w-full overflow-hidden truncate">
+                                <p class="flex-auto text-sm truncate">
+                                    <b>'.$firstname . " " . $lastname.'</b>
+                                </p>
+                                <p class="flex-none float-right ml-2 text-xs text-gray-500">'.$lastMsgTime.'</p>
+                            </div>
+                            <div>
+                                <p class="w-full text-xs text-gray-500 truncate">
+                                    '.$you.$lastMsg.'
+                                </p>
+                            </div>
+                        </div>
+                    </div>';
     }
 ?>

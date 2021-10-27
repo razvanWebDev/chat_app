@@ -88,6 +88,8 @@ function loginUser($username, $password){
     $_SESSION["m_image"] = $userExists["m_image"];
     $_SESSION["m_status"] = $userExists["m_status"];
 
+    $_SESSION['incoming_id'] = "mmm";
+
     header("Location: ../index.php");
     exit();
   }

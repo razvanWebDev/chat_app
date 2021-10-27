@@ -118,41 +118,20 @@ if(!isset($_SESSION["m_username"])){
         <!-- top bar -->
         <div class="flex items-center justify-between flex-none w-full h-20 px-6 py-4 border-b md:px-12">
             <div class="flex items-center">
-                <?php
-            if(isset($_GET['member_id'])){
-                $query = "SELECT * FROM members WHERE m_unique_id = {$_GET['member_id']}";
-                $select_member = mysqli_query($connection, $query);
-                if(mysqli_num_rows($select_member) > 0){
-                    $row = mysqli_fetch_assoc($select_member);
-    
-    
-                    $firstname = $row['m_firstname'];
-                    $lastname = $row['m_lastname'];
-                    $image = !empty($row['m_image']) ? $row['m_image'] : "member.png";
-                    $status = $row['m_status'];
-                    $status_color = ($status == "active" ? "green" : "gray");
-
-            ?>
                 <img src="img/icons/arrow-left.svg" alt="back" id="show-side-panel-arrow"
                     class="w-6 mr-4 cursor-pointer md:hidden">
-                <div style="background-image: url(img/members/<?php echo $image ?>)"
-                    class="relative w-12 h-12 mr-3 bg-center bg-cover rounded-full user-image">
-                    <div class="absolute bottom-0 right-0 w-3 h-3 bg-<?php echo $status_color ?>-400 rounded-full">
-                    </div>
+                <div id="incoming-image-container" class="flex items-center">
+                    
                 </div>
-                <p class="text-sm truncate"><b>
-                        <?php echo $firstname . " " . $lastname ?>
-                    </b></p>
-                <?php }
-            } ?>
+                
             </div>
             <div id="user-icon" class="relative">
                 <img src="img/icons/user.svg" alt="user"
                     class="w-6 transition opacity-50 cursor-pointer hover:opacity-100">
                 <div id="logout-div"
-                    class="absolute right-0 z-50 hidden w-40 transition transform translate-y-full bg-white border border-gray-200 rounded -bottom-4">
+                    class="absolute right-0 z-50 hidden w-40 transition transform translate-y-full bg-white border border-gray-200 rounded shadow-xl -bottom-4">
                    <div class="flex flex-col items-center justify-center pt-4 pb-1">
-                       <!-- Get loged in user image -->
+                       <!-- Get loged-in user image -->
                        <?php
                         if(isset($_SESSION['unique_id'])){
                             $query = "SELECT * FROM members WHERE m_unique_id = {$_SESSION['unique_id']}";
@@ -162,8 +141,6 @@ if(!isset($_SESSION["m_username"])){
                                 $firstname = $row['m_firstname'];
                                 $lastname = $row['m_lastname'];
                                 $image = !empty($row['m_image']) ? $row['m_image'] : "member.png";
-                      
-            
                         ?>
 
                         <div style="background-image: url(img/members/<?php echo $image ?>)"
@@ -197,7 +174,7 @@ if(!isset($_SESSION["m_username"])){
         <div class="flex flex-none h-24 px-8 py-4 border-t md:px-12">
             <form action="" id="send-form" class="flex items-center w-full space-x-6" autocomplete="off">
                 <?php $member_id = isset($_GET['member_id']) ? $_GET['member_id'] : ""; ?>
-                <input type="text" name="incoming_id" value="<?php echo $member_id ?>" hidden>
+                <input id="incoming-id-input" type="text" name="incoming_id" value="<?php echo $member_id ?>" hidden>
                 <input id="send-input" name="message" type="text" class="input" placeholder="Enter message...">
                 <img id="emojis-btn" src="img/icons/emoji.svg" alt="emojis"
                     class="h-6 transition cursor-pointer hover:opacity-75">
