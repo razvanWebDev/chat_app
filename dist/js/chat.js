@@ -31,6 +31,7 @@ window.onload = () => {
     panelItems = document.querySelectorAll(".panel-item");
     panelItems.forEach((item) => {
       item.addEventListener("click", () => {
+        console.log("clicksetCurrentIncomingId");
         const incomingId = item.getAttribute("data-id");
         let xhr = new XMLHttpRequest(); //create XML object
         xhr.open(
@@ -47,6 +48,7 @@ window.onload = () => {
           }
         };
         xhr.send();
+        readMessages();
         //set incoming image for top bar
         setIncomingImage();
         //show text window if on mobile
@@ -70,6 +72,9 @@ window.onload = () => {
     xhr.send();
   };
   setIncomingImage();
+  setInterval(() => {
+    displayMembers();
+  }, 3000);
 
   //populate chat panel list
   const displayMembers = () => {
@@ -189,6 +194,19 @@ window.onload = () => {
   if (elementExists(sendBtn)) {
     sendMessage();
   }
+
+  //set messages as read
+  const readMessages = () => {
+    let xhr = new XMLHttpRequest(); //create XML object
+    xhr.open("GET", "php/set_msg_as_read.php", true);
+    xhr.onload = () => {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+        }
+      }
+    };
+    xhr.send();
+  };
 
   // **************************************************
 

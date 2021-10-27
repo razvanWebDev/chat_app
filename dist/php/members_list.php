@@ -18,12 +18,16 @@
 
         $getLastMsg  = mysqli_query($connection, $getLastMsgQuery);
 
-        $lastMsg = $lastMsgTime = $you = "";
+        $lastMsg = $lastMsgTime = $you = $fontWeight = "";
 
         $row2 = mysqli_fetch_assoc($getLastMsg);
         if(mysqli_num_rows($getLastMsg) > 0){
             $lastMsg = $row2['msg'];
+            $seenMsg = $row2['seen'];
             $msgTimestamp = strtotime($row2['timestamp']);
+            // Set text bold if there are unread messages
+            $fontWeight = ($seenMsg == "true" || $outgoing_id == $row2['outgoing_msg_id'] ? "font-normal" : "font-semibold");
+
             //check if the last msg was today
             $dateDiff = date("Ymd") - date("Ymd", $msgTimestamp);
             $lastMsgTime = $dateDiff == 0 ? date('H:i', $msgTimestamp) : ($dateDiff == 1 ? "Yesterday" : date("Y/m/d", $msgTimestamp));
@@ -43,9 +47,7 @@
                         </div>
                         <div class="flex flex-col flex-auto h-full truncate justify-evenly">
                             <div class="flex w-full max-w-full overflow-hidden truncate">
-                                <p class="flex-auto text-sm truncate">
-                                    <b>'.$firstname . " " . $lastname.'</b>
-                                </p>
+                                <p class="'.$fontWeight.' flex-auto mb-1 text-sm uppercase truncate">'.$firstname . " " . $lastname.'</p>
                                 <p class="flex-none float-right ml-2 text-xs text-gray-500">'.$lastMsgTime.'</p>
                             </div>
                             <div>

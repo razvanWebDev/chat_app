@@ -173,7 +173,6 @@ if(!isset($_SESSION["m_username"])){
         <!-- bottom bar -->
         <div class="flex flex-none h-24 px-8 py-4 border-t md:px-12">
             <form action="" id="send-form" class="flex items-center w-full space-x-6" autocomplete="off">
-                <?php $member_id = isset($_GET['member_id']) ? $_GET['member_id'] : ""; ?>
                 <input id="incoming-id-input" type="text" name="incoming_id" value="<?php echo $member_id ?>" hidden>
                 <input id="send-input" name="message" type="text" class="input" placeholder="Enter message...">
                 <img id="emojis-btn" src="img/icons/emoji.svg" alt="emojis"
