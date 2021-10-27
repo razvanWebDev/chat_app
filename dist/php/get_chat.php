@@ -56,9 +56,11 @@ if(isset($_SESSION['unique_id'])){
                 }
                 
             }
-            echo $output;
+          
+        }else{
+            $output = "<p>There are no messages yet!</p>";
         }
-    }
+    }echo $output;
 }else{
     header("Location: ../login");
 }
