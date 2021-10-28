@@ -9,7 +9,7 @@ $query = "SELECT * FROM members LEFT JOIN messages
         WHERE NOT m_unique_id={$outgoing_id} 
         GROUP BY members.m_unique_id 
         ORDER BY max(messages.msg_id) DESC";
-        
+
 $select_members = mysqli_query($connection, $query);
 
 $output = "";
@@ -21,4 +21,5 @@ if(mysqli_num_rows($select_members) == 0){
 }
 
 echo $output;
+exit();
 ?>

@@ -55,9 +55,8 @@ if(!isset($_SESSION["m_username"])){
             <!-- groups panel items container -->
             <div id="groups-panel-list"
                 class="flex-auto pb-12 overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-blue-300">
-                <a href="#" class="panel-item">
                     <div
-                        class="flex h-20 p-4 mr-6 transition rounded group-panel-item active-panel-item hover:bg-blue-300">
+                        class="flex px-4 py-2 mb-2 mr-6 transition rounded cursor-pointer h-18 group-panel-item active-panel-item bg-gray-50">
                         <div class="flex-none w-16">
                             <div
                                 class="flex items-center justify-center flex-none w-12 h-12 mr-3 bg-yellow-400 rounded-full">
@@ -81,9 +80,7 @@ if(!isset($_SESSION["m_username"])){
                             </div>
                         </div>
                     </div>
-                </a>
-                <a href="#" class="panel-item">
-                    <div class="flex h-20 p-4 mr-6 transition rounded group-panel-item hover:bg-blue-300">
+                    <div class="flex px-4 py-2 mb-2 mr-6 transition rounded cursor-pointer h-18 group-panel-item bg-gray-50">
                         <div class="flex-none w-16">
                             <div
                                 class="flex items-center justify-center flex-none w-12 h-12 mr-3 bg-yellow-400 rounded-full">
@@ -107,7 +104,6 @@ if(!isset($_SESSION["m_username"])){
                             </div>
                         </div>
                     </div>
-                </a>
             </div>
         </div>
     </div>

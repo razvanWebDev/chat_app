@@ -33,7 +33,7 @@ if(isset($_SESSION['unique_id'])){
                     $output .= '<div class="max-w-3/4 w-max">
                                     <div class="relative self-start px-4 py-1 text-white rounded-lg shadow bg-primary">
                                         <p>'.$row['msg'].'</p>
-                                        <div class="absolute p-1 bg-white rounded-full -left-6 -bottom-6">
+                                        <div class="absolute p-1 bg-gray-100 rounded-full -left-6 -bottom-6">
                                             <div style="background-image: url(img/members/'.$_SESSION['m_image'].')"
                                                 class="w-8 h-8 bg-center bg-cover rounded-full ">
                                             </div>
@@ -45,9 +45,9 @@ if(isset($_SESSION['unique_id'])){
                     $output .= '<div class="self-end max-w-3/4 w-max">
                                     <div class="relative px-4 py-1 bg-gray-100 rounded-lg shadow">
                                         <p>'.$row['msg'].'</p>
-                                        <div class="absolute p-1 bg-white rounded-full -right-4 -bottom-4">
+                                        <div class="absolute p-1 rounded-full bg-gray-50 -right-6 -bottom-6">
                                             <div style="background-image: url(img/members/'.$incoming_member_img.')"
-                                                class="w-6 h-6 bg-center bg-cover rounded-full ">
+                                                class="w-8 h-8 bg-center bg-cover rounded-full ">
                                             </div>
                                         </div>
                                     </div>
@@ -64,4 +64,5 @@ if(isset($_SESSION['unique_id'])){
 }else{
     header("Location: ../login");
 }
+exit();
 ?>
