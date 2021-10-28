@@ -146,7 +146,7 @@ if(!isset($_SESSION["m_username"])){
                         <div style="background-image: url(img/members/<?php echo $image ?>)"
                             class="relative w-20 h-20 bg-center bg-cover rounded-full">
                         </div>
-                        <p><?php echo $firstname . " " . $lastname ?></p>
+                        <p class="px-4 text-lg text-center"><?php echo $firstname . " " . $lastname ?></p>
                         <?php } } ?>
 
                    </div>
@@ -155,7 +155,7 @@ if(!isset($_SESSION["m_username"])){
                     </div>
                     <div class="w-3/5 mx-auto border-b border-gray-200"></div>
                     <div class="flex justify-center py-3 cursor-pointer hover:bg-gray-50">
-                        <img src="img/icons/logout.svg" alt="logout" class="w-4">
+                        <img src="img/icons/logout.svg" alt="logout" class="w-4 mr-2">
                         <a href="php/logout.php"><span class="text-sm">Logout</span></a>
                     </div>
                 </div>
