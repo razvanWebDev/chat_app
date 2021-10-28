@@ -1,5 +1,8 @@
 module.exports = {
-  purge: [],
+  purge: {
+    enabled: true,
+    content: ["./dist/**/*.html", "./dist/**/*.php"],
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
     debugScreens: {

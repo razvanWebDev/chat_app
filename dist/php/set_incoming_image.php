@@ -13,11 +13,11 @@ if(isset($_SESSION['incoming_id']) && !empty($_SESSION['incoming_id'])){
         $lastname = $row['m_lastname'];
         $image = !empty($row['m_image']) ? $row['m_image'] : "member.png";
         $status = $row['m_status'];
-        $status_color = ($status == "active" ? "green" : "gray");
+        $status_color = ($status == "active" ? "bg-green-400" : "bg-gray-400");
 
         $output .= '<div style="background-image: url(img/members/'.$image.')"
                         class="relative w-12 h-12 mr-3 bg-center bg-cover rounded-full user-image">
-                        <div class="absolute bottom-0 right-0 w-3 h-3 bg-'.$status_color.'-400 rounded-full">
+                        <div class="absolute bottom-0 right-0 w-4 h-4 '.$status_color.' rounded-full">
                         </div>
                     </div>
                     <p class="text-sm truncate"><b>'.$firstname . " " . $lastname.'</b></p>';
