@@ -48,10 +48,10 @@
                         <div class="flex flex-col flex-auto h-full truncate justify-evenly">
                             <div class="flex w-full max-w-full overflow-hidden truncate">
                                 <p class="'.$fontWeight.' flex-auto mb-1 text-sm uppercase truncate">'.$firstname . " " . $lastname.'</p>
-                                <p class="flex-none float-right ml-2 text-xs text-gray-500">'.$lastMsgTime.'</p>
+                                <p class="'.$fontWeight.' flex-none float-right ml-2 text-xs text-gray-500">'.$lastMsgTime.'</p>
                             </div>
                             <div>
-                                <p class="w-full text-xs text-gray-500 truncate">
+                                <p class="'.$fontWeight.' w-full text-xs text-gray-500 truncate">
                                     '.$you.$lastMsg.'
                                 </p>
                             </div>
