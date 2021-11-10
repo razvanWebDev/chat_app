@@ -722,6 +722,10 @@ select {
   background-color: rgba(191, 219, 254, var(--tw-bg-opacity));
 }
 
+.fixed {
+  position: fixed;
+}
+
 .absolute {
   position: absolute;
 }
@@ -1254,8 +1258,16 @@ select {
   background-size: cover;
 }
 
+.bg-contain {
+  background-size: contain;
+}
+
 .bg-center {
   background-position: center;
+}
+
+.bg-no-repeat {
+  background-repeat: no-repeat;
 }
 
 .object-contain {

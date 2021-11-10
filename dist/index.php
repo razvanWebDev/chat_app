@@ -110,7 +110,7 @@ if(!isset($_SESSION["m_username"])){
 
     <!-- TEXT WINDOW -->
     <div id="text-window"
-        class="absolute flex flex-col w-screen h-screen overflow-y-auto transition-transform duration-300 transform translate-x-full shadow-inner md:static md:translate-x-0 bg-gray-50">
+        class="fixed flex flex-col w-screen h-screen overflow-y-auto transition-transform duration-300 transform translate-x-full shadow-inner md:static md:translate-x-0 bg-gray-50">
         <!-- top bar -->
         <div class="flex items-center justify-between flex-none w-full h-20 px-6 py-4 border-b md:px-12">
             <div class="flex items-center">
@@ -159,8 +159,8 @@ if(!isset($_SESSION["m_username"])){
         </div>
         <!-- chat window -->
         <div id="chat-box-container" style="background-image: linear-gradient(rgba(255, 255, 255, 0.90) 0%,rgba(255, 255, 255, 0.97) 100%),
-                                            url(img/chat_bg.jpg);"
-            class="flex-auto overflow-y-auto bg-cover shadow-inner h- scrollbar-thin scrollbar-track-blue-50 scrollbar-thumb-blue-300">
+                                            url(img/Logo_small.png);"
+            class="flex-auto overflow-y-auto bg-center bg-no-repeat bg-contain shadow-inner scrollbar-thin scrollbar-track-blue-50 scrollbar-thumb-blue-300">
             <div id="chat-box"
                 class="flex flex-col justify-end min-h-full gap-8 pb-16 pl-8 pr-10 md:pr-16 md:pl-14">
                 <!-- chat items -->
