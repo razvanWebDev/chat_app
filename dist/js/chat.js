@@ -149,6 +149,7 @@ const sendMessage = () => {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
           sendInput.value = "";
+          textAreaAdjust(sendInput);
           getMessages();
           scrollChatToBottom();
         }
@@ -319,4 +320,19 @@ if (elementExists(fileInputs)) {
   changeFileInputs();
 }
 // *********************************************
+
+//Grow send input with content
+sendInput.addEventListener("keyup", () => {
+  textAreaAdjust(sendInput);
+});
+const textAreaAdjust = (element) => {
+  if (element.scrollHeight < 150) {
+    element.style.overflowY = "hidden";
+    element.style.height = "auto";
+    element.style.height = 2 + element.scrollHeight + "px";
+  } else {
+    element.style.overflowY = "scroll";
+  }
+};
+
 //};
