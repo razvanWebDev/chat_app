@@ -741,6 +741,10 @@ textarea {
   position: relative;
 }
 
+.-top-6 {
+  top: -1.5rem;
+}
+
 .right-0 {
   right: 0px;
 }
@@ -755,10 +759,6 @@ textarea {
 
 .-bottom-4 {
   bottom: -1rem;
-}
-
-.-bottom-6 {
-  bottom: -1.5rem;
 }
 
 .-left-6 {

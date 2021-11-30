@@ -34,7 +34,7 @@ if(isset($_SESSION['unique_id'])){
                     $output .= '<div class="max-w-3/4 w-max">
                                     <div class="relative self-start px-4 py-1 text-white rounded-lg shadow bg-primary">
                                         <p>'.$msg.'</p>
-                                        <div class="absolute p-1 bg-gray-100 rounded-full -left-6 -bottom-6">
+                                        <div class="absolute p-1 bg-gray-100 rounded-full -left-6 -top-6">
                                             <div style="background-image: url(img/members/'.$_SESSION['m_image'].')"
                                                 class="w-8 h-8 bg-center bg-cover rounded-full ">
                                             </div>
@@ -46,7 +46,7 @@ if(isset($_SESSION['unique_id'])){
                     $output .= '<div class="self-end max-w-3/4 w-max">
                                     <div class="relative px-4 py-1 bg-gray-100 rounded-lg shadow">
                                         <p>'.$msg.'</p>
-                                        <div class="absolute p-1 rounded-full bg-gray-50 -right-6 -bottom-6">
+                                        <div class="absolute p-1 rounded-full bg-gray-50 -right-6 -top-6">
                                             <div style="background-image: url(img/members/'.$incoming_member_img.')"
                                                 class="w-8 h-8 bg-center bg-cover rounded-full ">
                                             </div>
