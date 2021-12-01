@@ -1,7 +1,7 @@
 module.exports = {
   purge: {
     enabled: true,
-    content: ["./dist/**/*.html", "./dist/**/*.php"],
+    content: ["./dist/**/*.html", "./dist/**/*.php", "./dist/**/*.js"],
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -22,6 +22,9 @@ module.exports = {
         "1/4": "25%",
         "1/2": "50%",
         "3/4": "75%",
+      },
+      padding: {
+        18: "4.5rem",
       },
     },
   },

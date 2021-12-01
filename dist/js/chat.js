@@ -7,6 +7,7 @@ const incomingImageContainer = document.querySelector(
 );
 const chatBox = document.querySelector("#chat-box");
 const chatBoxContainer = document.querySelector("#chat-box-container");
+const bottomBar = document.querySelector("#bottom-bar");
 const sendForm = document.querySelector("#send-form");
 const sendInput = document.querySelector("#send-input");
 const sendBtn = document.querySelector("#send-btn");
@@ -281,8 +282,21 @@ if (elementExists(showSidePanelArrow)) {
 const showTextWindow = () => {
   textWindow.classList.remove("translate-x-full");
 };
-
 //   ###############################################
+// Fix for keayboard overlap on mobile
+const switchInputPosition = () => {
+  if (window.innerWidth <= 768) {
+    sendInput.onfocus = () => {
+      bottomBar.classList.replace("pb-4", "pb-18");
+    };
+    sendInput.onblur = () => {
+      bottomBar.classList.replace("pb-18", "pb-4");
+    };
+  }
+};
+if (sendInput) {
+  switchInputPosition();
+}
 
 //   EMOJIS PICKER===================================
 const emojiPicker = new FgEmojiPicker({
