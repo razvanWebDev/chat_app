@@ -1373,6 +1373,10 @@ textarea {
   padding-top: 1rem;
 }
 
+.pt-10 {
+  padding-top: 2.5rem;
+}
+
 .pr-4 {
   padding-right: 1rem;
 }
@@ -1389,12 +1393,12 @@ textarea {
   padding-bottom: 1rem;
 }
 
-.pb-12 {
-  padding-bottom: 3rem;
+.pb-6 {
+  padding-bottom: 1.5rem;
 }
 
-.pb-16 {
-  padding-bottom: 4rem;
+.pb-12 {
+  padding-bottom: 3rem;
 }
 
 .pb-18 {
